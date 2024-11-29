@@ -11,10 +11,11 @@ import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
+import { useAuth } from "context/AuthProvider.js";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto
+  w-full mx-auto bg-gradient-to-r from-[#0F3E82] to-[#124490] px-5 text-white
 `;
 
 export const NavLinks = tw.div`flex`;
@@ -91,7 +92,8 @@ export default ({
    */
 
   const { totalItems } = useCart();
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  const {logout} = useAuth();
   //  TODO
   //  1.Panggil local storage user simpan didalam variabel user
   //  2.Buat button logout dan gunakan fungsi logout dari AuthProvider
@@ -103,7 +105,10 @@ export default ({
         <Link to={"/"}>Home</Link>
       </NavLink>
       <NavLink>
-        <Link to={"/products"}>Products</Link>
+        <Link to={"/products"}>Category List</Link>
+      </NavLink>
+      <NavLink>
+        <Link to={"/products"}>Article</Link>
       </NavLink>
       <NavLink>
         <Link to="/about-us">About Us</Link>
@@ -111,9 +116,12 @@ export default ({
       <NavLink>
         <Link to={"/contact-us"}>Contact Us</Link>
       </NavLink>
-      <NavLink>
-        <Link to={"/orders"}>Orders</Link>
+      {/*  */}
+<NavLink>
+        <Link to={"/orders"}>Order</Link>
       </NavLink>
+      {/*  */}
+      
       <NavLink tw="lg:ml-12!">
         <Link to="/cart">
           <CartContainer>
@@ -122,10 +130,16 @@ export default ({
           </CartContainer>
         </Link>
       </NavLink>
+      {user ?(
+        <div>
+            <p>{user.name} <button onClick={logout}>logut</button></p>
+        </div>
 
+      ):
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/#">
         <Link to={"/login"}>Login</Link>
       </PrimaryLink>
+      }
     </NavLinks>,
   ];
 

@@ -24,7 +24,7 @@ const Container = tw.div`relative -mx-8 -mt-8`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row bg-gray-100`;
 const LeftColumn = tw.div`ml-8 mr-8 xl:pl-10 py-8`;
 const RightColumn = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1551918120-9739cb430c6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&width=1440&height=1024&q=75");
+  background-image: url("https://images.tokopedia.net/img/cache/900/VqbcmM/2021/7/2/91e3fdd9-b4f8-481c-af6b-b279c18f4aad.jpg");
   ${tw`bg-green-500 bg-cover bg-center xl:ml-24 h-96 lg:h-auto lg:w-1/2 lg:flex-1`}
 `;
 

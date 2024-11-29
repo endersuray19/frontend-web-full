@@ -5,9 +5,10 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
+import patner from "../../images/Patner.png";
 import {ReactComponent as SvgDotPattern } from "images/dot-pattern.svg"
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative bg-white mt-5 rounded-xl shadow-md`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
@@ -41,16 +42,16 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 
 
 export default ({
-  subheading = "Our Expertise",
+  subheading = "Our Patner",
   heading = (
     <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
+      Designed & Developed by <span tw="text-primary-500">Top manufacturers.</span>
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  description = "Discover your favorite figurines from renowned manufacturers, bringing your beloved anime characters to life.",
   primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
-  imageSrc = TeamIllustrationSrc,
+  imageSrc = {patner},
   buttonRounded = true,
   imageRounded = true,
   imageBorder = false,
@@ -66,7 +67,7 @@ export default ({
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded}/>
+          <Image css={imageCss} src={patner} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded}/>
           {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, json } from "react-router-dom";
 import axios from "axios";
 
 const AuthContext = createContext();
@@ -29,8 +29,13 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/auth/login`,
-        dataUser
+        `http://localhost:3001/api/auth/customer/signin`,
+        JSON.stringify(form),
+        {
+          headers:{
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       const user = response.data;

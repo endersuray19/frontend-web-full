@@ -11,11 +11,11 @@ import ShieldIconImage from "images/shield-icon.svg";
 import CustomizeIconImage from "images/customize-icon.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 
-const Heading = tw(SectionHeading)``;
-const Subheading = tw(SubheadingBase)`text-center mb-3`;
+const Heading = tw(SectionHeading)`text-[#015AAC]`;
+const Subheading = tw(SubheadingBase)`text-center text-[#015AAC] mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto`;
 const ThreeColumnContainer = styled.div`
-  ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
+  ${tw`mt-10  flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
 `;
 const Column = styled.div`
   ${tw`lg:w-1/3 max-w-xs`}
@@ -51,28 +51,83 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
 `;
 
 export default ({
+ 
   cards = [
     {
-      imageSrc: ShieldIconImage,
-      title: "Secure",
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/fate-1681801486009.png?v=1681801487",
+      title: "Fate",
       description: "We strictly only deal with vendors that provide top notch security.",
       url: "https://timerse.com"
     },
     {
-      imageSrc: SupportIconImage,
-      title: "24/7 Support",
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/one-piece-1681788931315.png?v=1681788932",
+      title: "One Piece",
       description: "Lorem ipsum donor amet siti ceali placeholder text",
       url: "https://google.com"
     },
     {
-      imageSrc: CustomizeIconImage,
-      title: "Customizable",
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/demon-slayer-1681788960209.png?v=1681788961",
+      title: "KNY",
+      description: "Lorem ipsum donor amet siti ceali placeholder text",
+      url: "https://reddit.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/my-hero-academia-1681789003786.png?v=1681789004",
+      title: "My Hero Academia",
+      description: "We strictly only deal with vendors that provide top notch security.",
+      url: "https://timerse.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/chainsaw-man-1681803932554.png?v=1681803934",
+      title: "Chainsaw Man",
+      description: "Lorem ipsum donor amet siti ceali placeholder text",
+      url: "https://google.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/evangelion-1681797089181.png?v=1681797090",
+      title: "Evangelion",
+      description: "Lorem ipsum donor amet siti ceali placeholder text",
+      url: "https://reddit.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/jujutsu-kaisen-1681890634721.png?v=1681890636",
+      title: "Jujutsu Kaisen",
+      description: "We strictly only deal with vendors that provide top notch security.",
+      url: "https://timerse.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/fairy-tail-1681886312148.png?v=1681886314",
+      title: "Fairy Tail",
+      description: "Lorem ipsum donor amet siti ceali placeholder text",
+      url: "https://google.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/re-zero-1681789031524.png?v=1681789032",
+      title: "Re/Zero",
+      description: "Lorem ipsum donor amet siti ceali placeholder text",
+      url: "https://reddit.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/tqq-1681807076799.png?v=1681807078",
+      title: "The Quintessential Quintuplets",
+      description: "We strictly only deal with vendors that provide top notch security.",
+      url: "https://timerse.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/naruto-1681788982617.png?v=1681788983",
+      title: "Naruto",
+      description: "Lorem ipsum donor amet siti ceali placeholder text",
+      url: "https://google.com"
+    },
+    {
+      imageSrc: "https://cdn.shopify.com/s/files/1/0095/6910/8015/t/88/assets/hatsune-miku-1681868244530.png?v=1681868246",
+      title: "Vocaloid",
       description: "Lorem ipsum donor amet siti ceali placeholder text",
       url: "https://reddit.com"
     }
   ],
   linkText = "Learn More",
-  heading = "",
+  heading = "Pupular Anime Titles",
   subheading = "",
   description = "",
   imageContainerCss = null,
@@ -95,17 +150,18 @@ export default ({
           {cards.map((card, i) => (
             <Column key={i}>
               <Card href={card.url}>
-                <span className="imageContainer" css={imageContainerCss}>
-                  <img src={card.imageSrc} alt="" css={imageCss} />
+                <span className="w-[150px] " css={imageContainerCss}>
+                  <img src={card.imageSrc} alt=""className="rounded-full shadow-xl" />
+                  <span className="title">{card.title}</span>
                 </span>
-                <span className="title">{card.title}</span>
+                {/*
                 <p className="description">{card.description}</p>
                 {linkText && (
                   <span className="link">
                     <span>{linkText}</span>
                     <ArrowRightIcon className="icon" />
                   </span>
-                )}
+                )} */}
               </Card>
             </Column>
           ))}

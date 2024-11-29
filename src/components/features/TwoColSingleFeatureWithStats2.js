@@ -40,13 +40,13 @@ const DecoratorBlob = styled(SvgDotPattern)(props => [
 ]);
 
 export default ({
-  subheading = "Our Track Record",
+  subheading = "Article & News",
   heading = (
     <>
-      We have been doing this <wbr /> since <span tw="text-primary-500">1999.</span>
+     Bringing  <wbr /> Japanese Culture & Anime  <span tw="text-primary-500">to Life</span>
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  description = "Explore the rich traditions of Japanese culture and the vibrant world of anime. From iconic figures to timeless stories, we celebrate the art and passion that have captivated fans for decades. Join us on this journey through the heart of Japan's pop culture.",
   primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
   imageSrc = StatsIllustrationSrc,
@@ -81,7 +81,7 @@ export default ({
     <Container>
       <TwoColumn css={!imageInsideDiv && tw`md:items-center`}>
         <ImageColumn css={imageContainerCss}>
-          {imageInsideDiv ? <Image imageSrc={imageSrc} css={imageCss} /> : <img src={imageSrc} css={imageCss} alt="" />}
+          {imageInsideDiv ? <Image imageSrc={"https://jagatplay.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2024/07/hatsune-miku-movie.jpg.webp"} css={imageCss} /> : <img src={imageSrc} css={imageCss} alt="" />}
           {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
@@ -89,14 +89,14 @@ export default ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            <Statistics>
+            {/* <Statistics>
               {statistics.map((statistic, index) => (
                 <Statistic key={index}>
                   <Value>{statistic.value}</Value>
                   <Key>{statistic.key}</Key>
                 </Statistic>
               ))}
-            </Statistics>
+            </Statistics> */}
             <PrimaryButton as="a" href={primaryButtonUrl}>
               {primaryButtonText}
             </PrimaryButton>

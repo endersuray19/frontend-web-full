@@ -9,13 +9,15 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 import { useCart } from "react-use-cart";
+import { data } from "helpers/Utils";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import { useProductsContext } from "context/product_context";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
-const Header = tw(SectionHeading)``;
+const Header = tw(SectionHeading)`text-[#015AAC]`;
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 
 const ModalContent = tw.div`bg-white p-8 rounded-lg text-center`;
@@ -26,6 +28,7 @@ const QuantityDisplay = tw.div`text-lg font-bold`;
 const ModalContainer = tw.div`fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50`;
 
 const CancelButton = tw(
+  
   PrimaryButtonBase
 )`text-sm mt-4 bg-red-600 hocus:bg-red-700 ml-5`;
 
@@ -80,31 +83,31 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-export default ({ heading = "Checkout the Menu" }) => {
+export default ({ heading = "RANKING" }) => {
+  // const {products} = useProductsContext();
+  // const {getElementbyId} = useProductsContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [tabsKeys, setTabsKeys] = useState([
     "Best Sellers",
-    "Main",
-    "Soup",
-    "Desserts",
+    "Figure",
+    "Nendroid",
+    "Fumo",
   ]);
   const [activeTab, setActiveTab] = useState("Best Sellers");
   const { addItem, updateItemQuantity, items } = useCart();
-  const { products } = useProductsContext();
-  const getRandomCards = () => {
-    const cards = products;
-    return cards.sort(() => Math.random() - 0.5);
-  };
-
+  // const { products } = useProductsContext();
+ 
+  const {product,getProductBtId, products} = useProductsContext();
   const tabs = {
     "Best Sellers": products
-      .sort((a, b) => b.stars - a.stars) // Sort by stars in descending order
+    //   .sort((a, b) => b.stars - a.stars) // Sort by stars in descending order
       .slice(0, 8), // Get the top 8 items
-    Main: getRandomCards(), // Perbaharui filter berdasarkan Kaos
-    Soup: getRandomCards(), // Perbaharui filter berdasarkan Sepatu
-    Desserts: getRandomCards(), // Perbaharui filter berdasarkan Jaket
+      Figure: products.filter((product)=>product.category.name === "Figure"), // Perbaharui filter berdasarkan Kaos
+      Nendroid: products.filter((product)=>product.category.name === "Nendroid"), // Perbaharui filter berdasarkan Sepatu
+      Fumo: products.filter((product)=>product.category.name === "Fumo"),
+     // Perbaharui filter berdasarkan Jaket
   };
 
   const openModal = (item) => {
@@ -156,6 +159,7 @@ export default ({ heading = "Checkout the Menu" }) => {
       );
     }
   };
+  console.log("DATA : ",products);
 
   return (
     <Container>
@@ -204,7 +208,7 @@ export default ({ heading = "Checkout the Menu" }) => {
                 >
                   <Link to={`/detail-product/${card.id}`}>
                     <CardImageContainer
-                      image={card.image}
+                      image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card.images[0]}`}
                       className="flex items-center justify-center"
                     />
                   </Link>

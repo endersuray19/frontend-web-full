@@ -27,10 +27,11 @@ const GridView = ({ products }) => {
           return (
             <Product
               key={item.id}
-              image={item.image}
-              name={item.name}
+              image={item.imageSrc}
+              name={item.title}
               id={item.id}
               price={item.price}
+              company={item.company}
             ></Product>
           );
         })}

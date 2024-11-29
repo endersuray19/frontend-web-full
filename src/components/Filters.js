@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useFilterContext } from "../context/filter_context";
 import { getUniqueValues, formatPrice } from "../helpers/helpers";
 import { FaCheck } from "react-icons/fa";
+import axios, { Axios } from "axios";
 
 const Filters = () => {
   const {
@@ -20,9 +21,53 @@ const Filters = () => {
     all_products,
     clearFilters,
   } = useFilterContext();
-
-  const categories = getUniqueValues(all_products, "category");
-  const companies = getUniqueValues(all_products, "company");
+  const user = JSON.parse(localStorage.getItem("user"))
+  const [categories, setCategories] = useState([]);
+  const [manufactures, setManufactures] = useState([]);
+  const getCategories = async()=>{
+    try{
+      const response = await axios.get(
+         "http://localhost:3001/api/categories",
+        {
+          headers:{
+            Authorization:`${user.token}`,
+          }
+        }
+      )
+      console.log("respone",response);
+      const category = response.data.data.map((item)=>item.name)
+      setCategories(["all",...category])
+    }
+    catch(err){
+      console.log(err);
+    }
+   
+  }
+  useEffect(()=>{
+    getCategories();
+  },[])
+  const getManufactures = async()=>{
+    try{
+      const response = await axios.get(
+         "http://localhost:3001/api/manufactures",
+        {
+          headers:{
+            Authorization:`${user.token}`,
+          }
+        }
+      )
+      console.log("respone",response);
+      const manufacture = response.data.data.map((item)=>item.name)
+      setManufactures(["all",...manufacture])
+    }
+    catch(err){
+      console.log(err);
+    }
+   
+  }
+  useEffect(()=>{
+    getManufactures();
+  },[])
   const colors = getUniqueValues(all_products, "colors");
 
   console.log("categories", categories);
@@ -67,14 +112,14 @@ const Filters = () => {
           {/* end of category */}
           {/* company */}
           <div className="form-control ">
-            <h5 className="font-bold">Company</h5>
+            <h5 className="font-bold">manufacture</h5>
             <select
               name="company"
               value={company}
               onChange={updateFilters}
               className="company text-sm"
             >
-              {companies.map((c, index) => {
+              {manufactures.map((c, index) => {
                 return (
                   <option key={index} value={c}>
                     {c}

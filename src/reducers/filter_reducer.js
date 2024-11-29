@@ -82,12 +82,12 @@ const filter_reducer = (state, action) => {
     }
     if (category !== "all") {
       tempProducts = tempProducts.filter(
-        (product) => product.category === category
+        (product) => product.category.name === category
       );
     }
     if (company !== "all") {
       tempProducts = tempProducts.filter(
-        (product) => product.company === company
+        (product) => product.manufacture.name === company
       );
     }
     if (color !== "all") {

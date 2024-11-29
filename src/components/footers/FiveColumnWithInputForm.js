@@ -3,8 +3,8 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-
-import LogoImage from "images/logo.svg";
+import { FaStar } from "react-icons/fa";
+import LogoImage from "../../images/cek-toko-sebelah.png";
 import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
@@ -36,7 +36,7 @@ const Divider = tw.div`my-16 border-b-2 border-gray-300 w-full`;
 const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-between`;
 
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
-const LogoImg = tw.img`w-8`;
+const LogoImg = tw.img`w-12`;
 const LogoText = tw.h5`ml-2 text-xl font-black tracking-wider text-gray-800`;
 
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font-medium text-gray-500`;
@@ -57,25 +57,59 @@ export default ({ background }) => {
       <Content>
         <SixColumns>
           <Column>
-            <ColumnHeading>Main</ColumnHeading>
+            <ColumnHeading>Information</ColumnHeading>
             <LinkList>
-              <LinkListItem>
-                <Link href="#">Blog</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">FAQs</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Support</Link>
-              </LinkListItem>
               <LinkListItem>
                 <Link href="#">About Us</Link>
               </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Terms of Use</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Help/Faq</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Articles</Link>
+              </LinkListItem>
             </LinkList>
           </Column>
-          
+          <Column>
+            <ColumnHeading>My Acount</ColumnHeading>
+            <LinkList>
+              <LinkListItem>
+                <Link href="#">My Order</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">My Adresses</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Account Dashboard</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Wishlist</Link>
+              </LinkListItem>
+            </LinkList>
+          </Column>
+          <Column>
+            <ColumnHeading>Useful Link</ColumnHeading>
+            <LinkList>
+              <LinkListItem>
+                <Link href="#">Paypal</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Master Card</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Google play</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">App Store</Link>
+              </LinkListItem>
+            </LinkList>
+          </Column>
+         
           <SubscribeNewsletterColumn>
-            <SubscribeNewsletterContainer>
+            {/* <SubscribeNewsletterContainer>
               <ColumnHeading>Subscribe to our Newsletter</ColumnHeading>
               <SubscribeText>
                 We deliver high quality blog posts written by professionals
@@ -85,17 +119,29 @@ export default ({ background }) => {
                 <Input type="email" placeholder="Your Email Address" />
                 <SubscribeButton type="submit">Subscribe</SubscribeButton>
               </SubscribeForm>
+            </SubscribeNewsletterContainer> */}
+          </SubscribeNewsletterColumn>
+          <SubscribeNewsletterColumn>
+            <SubscribeNewsletterContainer>
+              <ColumnHeading>Subscribe to our Newsletter</ColumnHeading>
+              <SubscribeText>
+               Join Our Newsletter
+              </SubscribeText>
+              <SubscribeForm method="get" action="#">
+                <Input type="email" placeholder=" Email Address" />
+                <SubscribeButton type="submit">Subscribe</SubscribeButton>
+              </SubscribeForm>
             </SubscribeNewsletterContainer>
           </SubscribeNewsletterColumn>
         </SixColumns>
         <Divider />
         <ThreeColRow>
           <LogoContainer>
-            <LogoImg src={LogoImage} />
-            <LogoText>Treact Inc.</LogoText>
+            <LogoImg  src={LogoImage} />
+            <LogoText></LogoText>
           </LogoContainer>
           <CopywrightNotice>
-            &copy; 2018 Treact Inc. All Rights Reserved.
+            &copy; 2018 Rock Star Chibi.
           </CopywrightNotice>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
