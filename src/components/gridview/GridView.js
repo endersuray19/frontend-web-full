@@ -24,14 +24,16 @@ const GridView = ({ products }) => {
     <>
       <div className="products-container grid-cols-3">
         {displayedProducts.map((item) => {
+          console.log(item.image); // Add this to check the image data
+          
           return (
             <Product
               key={item.id}
-              image={item.imageSrc}
+              image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
               name={item.title}
               id={item.id}
               price={item.price}
-              company={item.company}
+              manufacture={item.manufacture}
             ></Product>
           );
         })}

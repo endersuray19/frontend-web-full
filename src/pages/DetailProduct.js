@@ -12,6 +12,7 @@ import { FaStar, FaStarHalf, FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useProductsContext } from "context/product_context";
 import { data } from "helpers/Utils";
+import { spread } from "axios";
 
 const DetailProduct = () => {
   const {product, getProductById, setProduct} = useProductsContext();
@@ -55,22 +56,19 @@ const DetailProduct = () => {
 
   const handleAddToCart = () => {
     if (selectedItem ) {
-    
+    const quantityNumber = Number(quantity);
     }
     if(product?.stock===0){
       alert("The Stock is Out")
     }
     else{
-      addItem(product,product?.id);
+      addItem({...selectedItem},quantity);
     }
-   
+   setShowModal(false);
   };
 
   useEffect(() => {
-  // getProductById(id)
-  const findProduct = data.find((item)=>item.id.toString() === id);
-  console.log("Data",findProduct)
-  setProduct(findProduct);
+  getProductById(id)
   }, [id]);
 
   const handleChangePrice = () => {
@@ -78,7 +76,7 @@ const DetailProduct = () => {
   };
 
   const handleQuantityChange = (newQuantity) => {
-    setQuantity(Math.max(1, Math.min(10, newQuantity))); // Ensure quantity is within the allowed range
+    setQuantity(Math.max(1, Math.min(product.stock, newQuantity))); // Ensure quantity is within the allowed range
   };
 
   // useEffect(() => {
@@ -103,28 +101,26 @@ const DetailProduct = () => {
               {Array.isArray(product?.images) && product?.images?.length > 0 && (
                 <>
                   <ProductImage
-                    src={product?.images[mainImageIndex]}
+                     src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${product?.images[mainImageIndex]}`}
                     alt={product?.title}
                   />
                 </>
               )}
-              {Array.isArray(product?.images) && product?.images?.length > 1 && (
-                <div className="grid grid-cols-5 sm:gap-2 mt-4 ">
-                  {product?.images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`${product?.title} - ${index + 1}`}
-                      className={`h-20 w-20 rounded cursor-pointer ${
-                        index === mainImageIndex
-                          ? "border-2 border-red-500"
-                          : ""
-                      }`}
-                      onClick={() => changeMainImage(index)}
-                    />
-                  ))}
-                </div>
-              )}
+                {Array.isArray(product?.images) && product?.images.length > 0 && (
+      <div className="grid grid-cols-5 sm:gap-2 mt-4">
+        {product.images.map((image, index) => (
+          <img
+            key={index}
+            src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${image}`}
+            alt={`${product?.title} - ${index + 1}`}
+            className={`h-20 w-20 rounded cursor-pointer ${
+              index === mainImageIndex ? "border-2 border-red-500" : ""
+            }`}
+            onClick={() => changeMainImage(index)}
+          />
+        ))}
+      </div>
+)}
             </div>
 
             <ProductInfo>
@@ -159,8 +155,9 @@ const DetailProduct = () => {
               <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, odio deserunt sunt voluptatem dolores asperiores quam voluptates molestiae impedit deleniti fuga expedita illo aut, sed praesentium eveniet, voluptate temporibus rerum.</Description>
               <div>
                 <p className="mb-2">Available :{product?.stock} </p>
-                <p className="mb-2">Category : {product?.category}</p>
-                <p className="mb-2">Company : {product?.company}</p>
+                <p className="mb-2"> <strong>Category:</strong>  {product.category?.name || "No category available"}</p>
+                <p className="mb-2"><strong>Manufacture : </strong>{product.manufacture?.name || "No manufacture available"}</p>
+                <p className="mb-2"><strong>Serie : </strong>{product.serie?.name || "No serie available"}</p>
                 <hr className="my-4 h-1 border bg-gray-500" />
 
                 {/* <div className="flex">
@@ -218,13 +215,7 @@ const DetailProduct = () => {
               </h2>
               <p>Name : {selectedItem.name}</p>
               <p>Quantity : {quantity}</p>
-              <div className="flex items-center justify-center">
-                <p className="my-auto mr-3">Color : </p>
-                <div
-                  className={`relative w-8 h-8 rounded-full cursor-pointer border-2 `}
-                  style={{ backgroundColor: selectedColor }}
-                ></div>
-              </div>
+             
               <button
                 className="text-sm cursor-pointer bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-700"
                 onClick={() => handleAddToCart(product?.stock)}

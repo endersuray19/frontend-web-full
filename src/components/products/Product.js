@@ -4,7 +4,9 @@ import { formatPrice } from "../../helpers/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Product = ({ image, name, company, price, id }) => {
+const Product = ({ image,name, manufacture, price, id }) => {
+  const manufactureName = manufacture && manufacture.name ? manufacture.name : manufacture;
+  
   return (
     <Wrapper className="bg-white px-2 py-2 shadow-xl rounded-xl">
       <div className="container bg-white">
@@ -16,7 +18,7 @@ const Product = ({ image, name, company, price, id }) => {
       
        <h1 className="font-bold mt-2 text-red-600">{formatPrice(price)}</h1>
         <h1 className="font-bold  text-black-600">{name}</h1>
-        <h1>{company}</h1>
+        <h1>{manufactureName}</h1>
       
      
     </Wrapper>

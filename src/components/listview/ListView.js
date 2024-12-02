@@ -28,11 +28,11 @@ const ListView = ({ products }) => {
     <section>
       {currentProducts.map((item) => (
         <article key={item.id} className="flex pb-10 ">
-          <img src={item.imageSrc} className="w-[250px] h-[150px]" alt=""></img>
+          <img src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`} className="w-[250px] h-[150px]" alt=""></img>
           <div className="my-auto ml-10">
             <p className="text-2xl font-bold text-[#102a42]">{item.title}</p>
             <p className="text-[#b99179]">{formatPrice(item.price)}</p>
-            <p className="text-[#b99179]">{formatPrice(item.company)}</p>
+            <p className="text-[#b99179]">{formatPrice(item.manufacture)}</p>
             <p className="mt-2 mb-3 text-[#102a42]">{item.description}</p>
             <Link
               to={`/detail-product/${item.id}`}

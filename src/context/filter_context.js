@@ -19,8 +19,9 @@ const initialState = {
   sort: "price-lowest",
   filters: {
     text: "",
-    company: "all",
+    manufacture: "all",
     category: "all",
+    serie: "all",
     color: "all",
     min_price: 0,
     max_price: 0,
@@ -60,6 +61,9 @@ export const FilterProvider = ({ children }) => {
       value = e.target.textContent;
     }
     if (name === "manufacture") {
+      value = e.target.textContent;
+    }
+    if (name === "serie") {
       value = e.target.textContent;
     }
     if (name === "color") {

@@ -10,10 +10,11 @@ const Filters = () => {
     filters: {
       text,
       category,
-      company,
+      manufacture,
       color,
       min_price,
       price,
+      serie,
       max_price,
       shipping,
     },
@@ -24,6 +25,7 @@ const Filters = () => {
   const user = JSON.parse(localStorage.getItem("user"))
   const [categories, setCategories] = useState([]);
   const [manufactures, setManufactures] = useState([]);
+  const [series, setSeries] = useState([]);
   const getCategories = async()=>{
     try{
       const response = await axios.get(
@@ -46,10 +48,33 @@ const Filters = () => {
   useEffect(()=>{
     getCategories();
   },[])
-  const getManufactures = async()=>{
+      const getManufactures = async()=>{
+        try{
+          const response = await axios.get(
+            "http://localhost:3001/api/manufactures",
+            {
+              headers:{
+                Authorization:`${user.token}`,
+              }
+            }
+          )
+          console.log("respone",response);
+          const manufacture = response.data.data.map((item)=>item.name)
+          setManufactures(["all",...manufacture])
+        }
+        catch(err){
+          console.log(err);
+        }
+      
+      }
+  useEffect(()=>{
+    getManufactures();
+  },[])
+  
+  const getSeries = async()=>{
     try{
       const response = await axios.get(
-         "http://localhost:3001/api/manufactures",
+         "http://localhost:3001/api/series",
         {
           headers:{
             Authorization:`${user.token}`,
@@ -57,8 +82,8 @@ const Filters = () => {
         }
       )
       console.log("respone",response);
-      const manufacture = response.data.data.map((item)=>item.name)
-      setManufactures(["all",...manufacture])
+      const serie = response.data.data.map((item)=>item.name)
+      setSeries(["all",...serie])
     }
     catch(err){
       console.log(err);
@@ -66,11 +91,11 @@ const Filters = () => {
    
   }
   useEffect(()=>{
-    getManufactures();
+    getSeries();
   },[])
-  const colors = getUniqueValues(all_products, "colors");
-
   console.log("categories", categories);
+  console.log("manufactures", manufactures);
+  console.log("series", series);
   return (
     <Wrapper>
       <div className="content">
@@ -88,7 +113,8 @@ const Filters = () => {
           </div>
           {/* end of search input */}
           {/* category */}
-          <div className="form-control justify-start">
+         
+        <div className="form-control justify-start">
             <h5 className="font-bold">Category</h5>
             <div>
               {categories &&
@@ -109,28 +135,72 @@ const Filters = () => {
                 })}
             </div>
           </div>
-          {/* end of category */}
-          {/* company */}
-          <div className="form-control ">
-            <h5 className="font-bold">manufacture</h5>
-            <select
-              name="company"
-              value={company}
-              onChange={updateFilters}
-              className="company text-sm"
-            >
-              {manufactures.map((c, index) => {
-                return (
-                  <option key={index} value={c}>
-                    {c}
-                  </option>
-                );
-              })}
-            </select>
+          <div className="form-control justify-start">
+            <h5 className="font-bold">Manufacture</h5>
+            <div>
+              {manufactures &&
+                manufactures.map((c, index) => {
+                  return (
+                    <button
+                      key={index}
+                      onClick={updateFilters}
+                      type="button"
+                      name="manufacture"
+                      className={`${
+                        manufacture === c.toLowerCase()
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  );
+                })}
+            </div>
           </div>
-          {/* end of company */}
+          <div className="form-control justify-start">
+            <h5 className="font-bold">Serie</h5>
+            <div>
+              {series &&
+                series.map((c, index) => {
+                  return (
+                    <button
+                      key={index}
+                      onClick={updateFilters}
+                      type="button"
+                      name="serie"
+                      className={`${
+                        serie === c.toLowerCase()
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  );
+                })}
+            </div>
+          </div>
+          {/* end of category
+          {/* manufacture */}
+          {/* <div className="form-control">
+  <h5 className="font-bold">Manufacture</h5>
+  <select
+    name="manufacture"
+    value={manufacture.toLowerCase()} // Ini harus sesuai dengan nilai state manufacture
+    onChange={updateFilters}
+    className="manufacture text-sm"
+  >
+    {manufactures.map((manufacture, index) => {
+      // Pastikan 'manufacture' berisi data yang sesuai, jika data berupa objek maka ambil properti yang benar
+      const manufactureName = manufacture && manufacture.name ? manufacture.name.toLowerCase() : manufacture.toLowerCase(); // Convert ke lowercase jika perlu
+      return (
+        <option key={index} value={manufactureName}>
+          {manufactureName}
+        </option>
+      );
+    })}
+  </select>
+</div>
+          end of manufacture */}
           {/* colors */}
-          <div className="form-control">
+          {/* <div className="form-control">
             <h5>colors</h5>
             <div className="colors">
               {colors.map((c, index) => {
@@ -165,7 +235,7 @@ const Filters = () => {
                 );
               })}
             </div>
-          </div>
+          </div> */}
           {/* end of colors */}
           {/* price */}
           <div className="form-control">
@@ -235,7 +305,13 @@ const Wrapper = styled.section`
   .active {
     border-color: var(--clr-grey-5);
   }
-  .company {
+  .manufacture {
+    background: var(--clr-grey-10);
+    border-radius: var(--radius);
+    border-color: transparent;
+    padding: 0.25rem;
+  }
+    .serie {
     background: var(--clr-grey-10);
     border-radius: var(--radius);
     border-color: transparent;

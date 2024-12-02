@@ -34,6 +34,7 @@ const Cart = () => {
   };
   const user = JSON.parse(localStorage.getItem("user"));
   const {logout} = useAuth();
+  console.log("data ",items);
   console.log(items);
   return (
     <AnimationRevealPage>
@@ -47,10 +48,10 @@ const Cart = () => {
               {items.map((item)=>(
                 <div className="" key={item.id}>
                   <div className="flex">
-                    <img src={item.imageSrc} alt={item.imageSrc} className="w-[120px]"/>
+                    <img src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`} alt={item.images} className="w-[120px]"/>
                     <div className="info px-5 py-2 mt-1">
                     <h1>Name : {item.title}</h1>
-                    <h1>Category : {item.category}</h1>
+                    <h1>Category : {item.category.name}</h1>
                     <h1>Price : {item.price}</h1>
                     <h1>Total Price : {item.itemTotal}</h1>
                     <div className="button mt-2 flex">
@@ -92,6 +93,7 @@ const Cart = () => {
       <Footer background="bg-white" />
     </AnimationRevealPage>
   );
+  
 };
 
 export default Cart;

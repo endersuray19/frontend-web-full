@@ -5,11 +5,12 @@ const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const { product, setProduct} = useState([]);
+  const [ product, setProduct] = useState([]);
   const fetchProducts = async () => {
    try{
     const response = await axios.get("http://localhost:3001/api/products")
     console.log(response, "ini product")
+    
     setProducts(response.data.data);
    }
 
