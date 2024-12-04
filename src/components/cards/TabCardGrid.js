@@ -216,6 +216,7 @@ export default ({ heading = "RANKING" }) => {
                     Buy Now
                   </CardButton>
                 </Card>
+                
               </CardContainer>
             ))}
           </TabContent>

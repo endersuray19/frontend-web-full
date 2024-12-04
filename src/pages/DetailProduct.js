@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useProductsContext } from "context/product_context";
 import { data } from "helpers/Utils";
 import { spread } from "axios";
-
+import Swal from "sweetalert2";
 const DetailProduct = () => {
   const {product, getProductById, setProduct} = useProductsContext();
   const { id } = useParams();
@@ -55,20 +55,60 @@ const DetailProduct = () => {
   const CancelButton = tw.button`text-sm mt-4 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md ml-5 focus:outline-none cursor-pointer`;
 
   const handleAddToCart = () => {
-    if (selectedItem ) {
+    if (!selectedItem) return;
     const quantityNumber = Number(quantity);
-    }
+    const maxStock = product?.stock;
     if(product?.stock===0){
-      alert("The Stock is Out")
+     Swal.fire({
+      icon:"error",
+      title:"Out of Stock",
+      text:"This product is out of stock",
+     })
+     return;
     }
-    else{
-      addItem({...selectedItem},quantity);
-    }
-   setShowModal(false);
-  };
+    const existingItem = items.find((item) => item.id === product.id);
 
+    if (existingItem) {
+      const newQuantity = existingItem.quantity + quantityNumber;
+  
+      if (newQuantity > maxStock) {
+        Swal.fire({
+          icon: "error",
+          title: "Quantity Exceeds Stock",
+          text: `You can only add ${maxStock - existingItem.quantity} more of this product.`,
+        });
+        return;
+      }
+  
+      updateItemQuantity(product.id, newQuantity);
+      Swal.fire({
+        icon: "success",
+        title: "Quantity Updated",
+        text: `Updated quantity to ${newQuantity} for ${product.title}.`,
+      });
+    } else {
+      if (quantityNumber > maxStock) {
+        Swal.fire({
+          icon: "error",
+          title: "Quantity Exceeds Stock",
+          text: `You can only add up to ${maxStock} of this product.`,
+        });
+        return;
+      }
+  
+      addItem({ ...selectedItem }, quantityNumber);
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Product added to cart",
+      });
+    }
+  
+    setShowModal(false);
+  };
+  
   useEffect(() => {
-  getProductById(id)
+    getProductById(id);
   }, [id]);
 
   const handleChangePrice = () => {

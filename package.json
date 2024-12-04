@@ -24,6 +24,7 @@
     "react-use-cart": "^1.13.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
+    "sweetalert2": "^11.14.5",
     "twin.macro": "^3.4.1"
   },
   "scripts": {
