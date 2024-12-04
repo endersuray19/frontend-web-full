@@ -53,7 +53,7 @@ const DetailProduct = () => {
   const QuantityButton = tw.button`text-2xl font-bold focus:outline-none`;
   const QuantityDisplay = tw.div`text-2xl font-bold`;
   const CancelButton = tw.button`text-sm mt-4 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md ml-5 focus:outline-none cursor-pointer`;
-
+  
   const handleAddToCart = () => {
     if (!selectedItem) return;
     const quantityNumber = Number(quantity);

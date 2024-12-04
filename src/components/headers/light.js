@@ -6,7 +6,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { IoCart } from "react-icons/io5";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
-import logo from "../../images/cek-toko-sebelah.png";
+import logo from "../../images/logoWM.png";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { useCart } from "react-use-cart";
@@ -15,7 +15,7 @@ import { useAuth } from "context/AuthProvider.js";
 
 const Header = tw.header`
   flex justify-between items-center
-  w-full mx-auto bg-gradient-to-r from-[#0F3E82] to-[#124490] px-5 text-white
+  w-full mx-auto bg-white px-5 text-[#015AAC]
 `;
 
 export const NavLinks = tw.div`flex`;
@@ -130,16 +130,27 @@ export default ({
           </CartContainer>
         </Link>
       </NavLink>
-      {user ?(
-        <div>
-            <p>{user.name} <button onClick={logout}>logut</button></p>
+      {user ? (
+        <div className="flex items-center space-x-4">
+          <p>Welcome, {user.name}!</p>
+          <button
+            onClick={logout}
+            className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-700 transition"
+          >
+            Logout
+          </button>
         </div>
-
-      ):
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/#">
-        <Link to={"/login"}>Login</Link>
-      </PrimaryLink>
-      }
+      ) : (
+        <Link
+          to="/login"
+          className={`px-4 py-2 text-white bg-primary-500 ${
+            roundedHeaderButton ? "rounded-full" : "rounded-lg"
+          } hover:bg-black transition`}
+        >
+          Login
+        </Link>
+      )}
+      
     </NavLinks>,
   ];
 

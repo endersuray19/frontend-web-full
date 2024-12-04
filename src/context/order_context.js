@@ -13,24 +13,53 @@ export const OrderProvider = ({ children }) => {
     city: "",
     postalCode: "",
     country: "",
-    payment: "Credit Card",
-    userId: null,
-    orderItems: [],
+    status:"",
+    items: [],
   });
 
-  // TODO
-  // 1. Lengkapi fungsi getOrdersById
-  // 2. Buatkan fungsi createOrder
-  const getOrdersByUserId = async (id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const getOrdersByUserId = async () => {
     try {
-      // Your code here
+      const response = await axios.get(
+        `http://localhost:3001/api/orders`,{
+          headers: {
+            Authorization: `${user.token}`,
+          }
+        }
+      );
+      setOrders(response.data.data);
     } catch (err) {
-      // Your code here
+      console.log(err);
     }
+  
   };
 
   // Buat fungsi create order disni
-
+ const createOrder = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost:3001/api/orders",{
+       
+      formData, headers: {
+        Authorization: `${user.token}`,
+      }
+    },
+    );
+    console.log("respone",response.data.data);
+    toast.success(response.data.message);
+    setOrders(response.data.data);
+    setFormData({
+      address: "",
+      city: "",
+      postalCode: "",
+      country: "",
+      status:"",
+      items: [],
+    })
+  } catch (err) {
+    console.log(err);
+  }
+ }
   return (
     <OrdersContext.Provider
       value={{
@@ -40,6 +69,8 @@ export const OrderProvider = ({ children }) => {
         formData,
         setFormData,
         // panggil fungsinya disini
+        createOrder,
+        getOrdersByUserId,
       }}
     >
       {children}

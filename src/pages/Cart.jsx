@@ -44,48 +44,63 @@ const Cart = () => {
         <Content>
           <div className="grid">
             <h1 className="font-bold text-xl mb-3">Your Shoping Cart</h1>
-            <div className="bg-white w-full shadow-xl rounded-xl px-5 py-3 justify-between items-center">
+            <div className="bg-white w-full shadow-xl  rounded-xl mt-2 px-5 py-3 justify-between items-center">
               {items.map((item)=>(
-                <div className="" key={item.id}>
-                  <div className="flex">
-                    <img src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`} alt={item.images} className="w-[120px]"/>
-                    <div className="info px-5 py-2 mt-1">
-                    <h1>Name : {item.title}</h1>
-                    <h1>Category : {item.category.name}</h1>
-                    <h1>Price : {item.price}</h1>
-                    <h1>Total Price : {item.itemTotal}</h1>
-                    <div className="button mt-2 flex">
-                      <button className=" w-[30px] h-[30px] bg-gray-700 text-black font-bold" onClick={()=>handleUpdateQuantity(item.id,item.quantity-1)}disabled={item.quantity<=1}>-</button>
-                      <h1 className="px-1 mt-1"> {item.quantity}</h1>
-                      <button className="w-[30px] h-[30px] bg-gray-700 text-black font-bold" onClick={()=>
-                        updateItemQuantity(
-                          item.id,
-                          Math.min(item.stock,item.quantity+1)
-                        )
-                       } >+</button>
-                      
+                  <div className="flex justify-between mt-2 border-b" key={item.id}>
+                  <div className="flex items-start gap-10">
+                  <img
+                    src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
+                    alt={item.images}
+                    className="w-[120px]"
+                  />
+                  <div className="info px-5 py-2 mt-1">
+                      <h1>Name: {item.title}</h1>
+                      <h1>Category: {item.category.name}</h1>
+                      <h1>Price: {item.price}</h1>
+                      <h1>Total Price: {item.itemTotal}</h1>
                     </div>
-                    <button className="bg-red-700 text-white mt-3 px-2 rounded-xl font-bold" onClick={()=>handleRemoveItem(item.id)}>Remove</button>
-                    </div>
-                  
-                  </div>
-                 
+              </div>
+              <div className="flex flex-col items-end gap-3">
+                <div className="flex gap-2 items-center">
+                  <button
+                    className="w-[30px] h-[30px] bg-gray-700 text-black font-bold"
+                    onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
+                    disabled={item.quantity <= 1}
+                  >
+                    -
+                  </button>
+                  <h1 className="px-1 mt-1">{item.quantity}</h1>
+                  <button
+                    className="w-[30px] h-[30px] bg-gray-700 text-black font-bold"
+                    onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
+                    disabled={item.quantity >= item.quantity}
+                  >
+                    +
+                  </button>
                 </div>
-               
-              ))}
-            
+                <button
+                  className="bg-red-700 text-white mt-3 px-2 rounded-xl font-bold"
+                  onClick={() => handleRemoveItem(item.id)}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
+              ))}
+            </div>
+            <div className="bg-white w-full shadow-xl rounded-xl mt-5 px-5 py-3 items-center">
+            <div className="flex items-start gap-10">
             <h1 className="font-bold mt-5">Total Item Price : {totalPrice}</h1>
             <div className="buttton float-left text-left mx-0 px-5 py-5">
-           
-        <Link  to={ user ?"/checkout":"/login"} className="px-5 py-2  rounded-2xl bg-blue-900 text-white font-bold mr-5" >{user?"Checkout":"Login"}</Link>
-            
-              
+            </div>
+            <div className="flex flex-col items-end gap-3">
+            <div className="flex gap-2 items-center">
+                <Link  to={ user ?"/checkout":"/login"} className="px-5 py-2  rounded-2xl bg-blue-900 text-white font-bold mr-5" >{user?"Checkout":"Login"}</Link>
               <button className="w-[120px] py-1 rounded-2xl bg-red-900 text-white font-bold mr-5" onClick={()=>handleEmptyCart()}>Empty Cart</button>
             </div>
-      
-
-      
+            </div>
+            </div>
+            </div>
           </div>
         </Content>
       </Container>
