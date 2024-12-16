@@ -60,16 +60,16 @@ export default ({ background }) => {
             <ColumnHeading>Information</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">About Us</Link>
+                <Link href="/about-us">About Us</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Terms of Use</Link>
+                <Link href="/about-us">Terms of Use</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Help/Faq</Link>
+                <Link href="/contact-us">Help/Faq</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Articles</Link>
+                <Link href="/article">Articles</Link>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -77,7 +77,7 @@ export default ({ background }) => {
             <ColumnHeading>My Acount</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">My Order</Link>
+                <Link href="/order">My Order</Link>
               </LinkListItem>
               <LinkListItem>
                 <Link href="#">My Adresses</Link>
@@ -141,7 +141,7 @@ export default ({ background }) => {
             <LogoText></LogoText>
           </LogoContainer>
           <CopywrightNotice>
-            &copy; 2018 Rock Star Chibi.
+            &copy; 2024 Wibu MERC.
           </CopywrightNotice>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

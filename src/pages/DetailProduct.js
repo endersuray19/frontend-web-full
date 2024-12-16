@@ -38,20 +38,23 @@ const DetailProduct = () => {
   };
 
   const navigate = useNavigate();
-  const Container = tw.div`relative bg-gray-200 text-gray-700 -mb-8 -mx-8 px-8 py-20 lg:py-24`;
+  const Wrapper = tw.div`
+  flex items-center justify-center  
+`;
+const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justify-center align-middle content-center border rounded-xl shadow-md`;
   const Content = tw.div`max-w-screen-xl mx-auto relative z-10 flex flex-col lg:flex-row items-center justify-between`;
   const ProductImage = tw.img`w-full lg:w-[500px] h-64 lg:h-[400px] object-cover rounded-md mb-8 lg:mb-0`;
   const ProductInfo = tw.div`text-center lg:text-left lg:w-1/2 my-auto`;
   const Title = tw.h2`text-3xl font-semibold mb-2`;
-  const Description = tw.p`text-gray-600 mb-4`;
+  const Description = tw.p`text-gray-700 mb-4`;
   const RatingReviews = tw.p`text-gray-500 mb-4`;
   const Price = tw.p`text-xl font-semibold mt-4`;
-  const AddToCartButton = tw.button`bg-red-500 text-white px-6 py-3 rounded-md mt-4 hover:bg-red-700 transition duration-300`;
+  const AddToCartButton = tw.button`bg-[#015AAC] text-white px-6 py-3 rounded-md mt-4 hover:bg-[#210ba7] transition duration-300`;
   const ModalContainer = tw.div`fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50`;
   const ModalContent = tw.div`bg-white p-8 rounded-lg text-center`;
   const QuantityControl = tw.div`flex space-x-4 my-4 items-center justify-center md:justify-normal`;
   const QuantityButton = tw.button`text-2xl font-bold focus:outline-none`;
-  const QuantityDisplay = tw.div`text-2xl font-bold`;
+  const QuantityDisplay = tw.div`bg-white border rounded-md px-4 py-2 text-lg font-bold`;
   const CancelButton = tw.button`text-sm mt-4 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md ml-5 focus:outline-none cursor-pointer`;
   
   const handleAddToCart = () => {
@@ -127,13 +130,13 @@ const DetailProduct = () => {
   return (
     <AnimationRevealPage>
       <Header className={"mb-8"} />
-      
+      <Wrapper>
       <Container>
         <Content>
           <div className="md:flex md:space-x-10 md:mx-auto">
             <div>
               <button
-                className="bg-gray-500 p-2 text-white rounded mb-4"
+                className="bg-gray-500 p-2 text-white mt-2 rounded mb-4"
                 onClick={() => navigate(-1)}
               >
                 Back to products
@@ -165,7 +168,8 @@ const DetailProduct = () => {
 
             <ProductInfo>
               <Title>{product?.title} </Title>
-              <RatingReviews>
+              <p className="mb-2 text-gray-500">By {product.manufacture?.name || "No manufacture available"}</p>
+              {/* <RatingReviews>
                 <div className="flex items-center justify-center md:justify-normal">
                   {product?.rating}
                   <span className=" flex mx-2">
@@ -191,14 +195,35 @@ const DetailProduct = () => {
                   </span>
                   | Reviews:
                 </div>
-              </RatingReviews>
-              <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, odio deserunt sunt voluptatem dolores asperiores quam voluptates molestiae impedit deleniti fuga expedita illo aut, sed praesentium eveniet, voluptate temporibus rerum.</Description>
+              </RatingReviews> */}
+               <hr className="my-4 h-1 border bg-gray-500" />
+             
+              <Price>{formatPrice(handleChangePrice())}</Price> 
+              
+              <QuantityControl>
+              <p className="my-auto mx-2">QTY:</p>
+                <QuantityButton
+                  onClick={() => handleQuantityChange(quantity - 1)}
+                >
+                  -
+                </QuantityButton>
+             
+                <QuantityDisplay>{quantity}</QuantityDisplay>
+                <QuantityButton
+                  onClick={() => handleQuantityChange(quantity + 1)}
+                >
+                  +
+                </QuantityButton>
+                <AddToCartButton onClick={openModal}>Add to Cart</AddToCartButton>
+              </QuantityControl>
               <div>
-                <p className="mb-2">Available :{product?.stock} </p>
+              <hr className="my-4 h-1 border bg-gray-500" />
+              <Description>{product?.description}</Description>
+                <p className="mb-2"> <strong>Available:</strong> {product?.stock} </p>
                 <p className="mb-2"> <strong>Category:</strong>  {product.category?.name || "No category available"}</p>
-                <p className="mb-2"><strong>Manufacture : </strong>{product.manufacture?.name || "No manufacture available"}</p>
+                <p className="mb-2"> <strong>Manufacture:</strong>  {product.manufacture?.name || "No manufacture available"}</p>
                 <p className="mb-2"><strong>Serie : </strong>{product.serie?.name || "No serie available"}</p>
-                <hr className="my-4 h-1 border bg-gray-500" />
+               
 
                 {/* <div className="flex">
                   <p className="my-auto mr-4">Colors : </p>
@@ -227,21 +252,9 @@ const DetailProduct = () => {
                   )}
                 </div> */}
               </div>
-              <Price>{formatPrice(handleChangePrice())}</Price>
-              <QuantityControl>
-                <QuantityButton
-                  onClick={() => handleQuantityChange(quantity - 1)}
-                >
-                  -
-                </QuantityButton>
-                <QuantityDisplay>{quantity}</QuantityDisplay>
-                <QuantityButton
-                  onClick={() => handleQuantityChange(quantity + 1)}
-                >
-                  +
-                </QuantityButton>
-              </QuantityControl>
-              <AddToCartButton onClick={openModal}>Add to Cart</AddToCartButton>
+            
+             
+              
             </ProductInfo>
           </div>
         </Content>
@@ -269,6 +282,8 @@ const DetailProduct = () => {
           </ModalContainer>
         </>
       )}
+      </Wrapper>
+    
 
       <Footer background={"bg-white"} />
     </AnimationRevealPage>

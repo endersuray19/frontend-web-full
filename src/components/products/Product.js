@@ -4,19 +4,20 @@ import { formatPrice } from "../../helpers/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Product = ({ image,name, manufacture, price, id }) => {
+const Product = ({ image,name, category, manufacture, price, id }) => {
   const manufactureName = manufacture && manufacture.name ? manufacture.name : manufacture;
+  const categoryName = category && category.name ? category.name : category;
   
   return (
     <Wrapper className="bg-white px-2 py-2 shadow-xl rounded-xl">
       <div className="container bg-white">
-        <img src={image} alt={name} className="h-80 shadow-xl rounded-xl" />
+        <img src={image} alt={name} className="h-[200px] shadow-xl rounded-xl" />
         <Link to={`/detail-product/${id}`} className="link">
           <FaSearch />
         </Link>
       </div>
-      
-       <h1 className="font-bold mt-2 text-red-600">{formatPrice(price)}</h1>
+        <h1 className="">{categoryName}</h1>
+       <h1 className="font-bold text-[#0159AD]">{formatPrice(price)}</h1>
         <h1 className="font-bold  text-black-600">{name}</h1>
         <h1>{manufactureName}</h1>
       
@@ -31,7 +32,14 @@ const Wrapper = styled.article`
     background: var(--clr-black);
     border-radius: var(--radius);
     overflow: hidden; /* Hide overflowing content */
+    @media (min-width: 768px) {
+      w-[200px];
+    }
+    @media (min-width: 1024px) {
+      w-[300px];
+    }
   }
+  
 
   img {
     width: 100%;

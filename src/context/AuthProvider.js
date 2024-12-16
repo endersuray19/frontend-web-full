@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate, useLocation, json } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3001/api/auth/customer/signin`,
+         process.env.REACT_APP_API_URL+`/api/auth/customer/signin`,
         JSON.stringify(form),
         {
           headers:{
@@ -42,7 +43,12 @@ export const AuthProvider = ({ children }) => {
 
       navigation(redirectPath, { replace: true });
       localStorage.setItem("user", JSON.stringify(user));
-      alert("Login Berhasil, Selamat Datang Admin");
+      Swal.fire({
+           icon: 'success',
+           title: 'Success',
+           text: 'Login Berhasil, Selamat Datang Di WibuMERCH',
+     
+         })
       navigation("/");
       setUser(user);
     } catch (error) {

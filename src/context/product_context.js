@@ -8,7 +8,7 @@ export const ProductsProvider = ({ children }) => {
   const [ product, setProduct] = useState([]);
   const fetchProducts = async () => {
    try{
-    const response = await axios.get("http://localhost:3001/api/products")
+    const response = await axios.get( process.env.REACT_APP_API_URL+"/api/products")
     console.log(response, "ini product")
     
     setProducts(response.data.data);
@@ -22,7 +22,7 @@ export const ProductsProvider = ({ children }) => {
   const getProductById = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/products/${id}`
+         process.env.REACT_APP_API_URL+`/api/products/${id}`
       );
       setProduct(response.data.data);
 

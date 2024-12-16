@@ -11,12 +11,13 @@ import ProductGrid from "components/cards/TabCardGrid.js";
 import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
 import DownloadApp from "components/cta/DownloadApp.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
-
+import heroImage from "../images/hero.jpg";
 import chefIconImageSrc from "images/chef-icon.svg";
 import celebrationIconImageSrc from "images/celebration-icon.svg";
 import shopIconImageSrc from "images/shop-icon.svg";
 import ProductList from "components/products/ProductList";
 import ArticleList from "components/products/ArticleList";
+import ThreeColSimplecopy from "components/features/ThreeColSimplecopy";
 
 export default () => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
@@ -34,12 +35,12 @@ export default () => {
       <Hero
         heading={
           <>
-            Best Quality & Affordable{" "}
+            Discover the Best Quality and Affordable Choices to{" "}
             <HighlightedText> Elevate U'R Hobby</HighlightedText>
           </>
         }
         description="Discover the perfect blend of quality and affordability in our exclusive anime figurines and merchandise. Whether you're a seasoned collector or just getting started, we have something for every fan!"
-        imageSrc="https://images.tokopedia.net/img/cache/900/VqbcmM/2021/7/2/91e3fdd9-b4f8-481c-af6b-b279c18f4aad.jpg"
+        imageSrc={heroImage}
         imageCss={imageCss}
         imageDecoratorBlob={true}
         primaryButtonText="Shop Now"
@@ -47,15 +48,16 @@ export default () => {
       />
       <Features/>
       <ProductGrid/>
+      <ThreeColSimplecopy/>
+      {/* <ThreecolManufacture/> */}
       <MainFeature/>
-      
       <MainFeature2/>
       {/* <MainFeature3/> */}
       <DownloadApp
         text={
           <>
              NOW SHOP YOUR FAVORITE ANIME FIGURES AND MERCHANDISE EASILY, ANYTIME, ANYWHERE{" "}
-            <HighlightedTextInverse>Rock Your Fandom with CHIBI!</HighlightedTextInverse>
+            <HighlightedTextInverse> Express Your Passion with Wibu Merch!</HighlightedTextInverse>
           </>
         }
       />

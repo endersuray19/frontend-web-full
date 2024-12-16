@@ -2,12 +2,17 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useCart } from "react-use-cart";
+import { AuthProvider, useAuth } from "./AuthProvider";
 
 const OrdersContext = React.createContext();
 
 export const OrderProvider = ({ children }) => {
+  const {user } = useAuth();
+  const { items, emptyCart } = useCart();
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     address: "",
     city: "",
@@ -16,18 +21,22 @@ export const OrderProvider = ({ children }) => {
     status:"",
     items: [],
   });
-
-  const user = JSON.parse(localStorage.getItem("user"));
+  
+  const localUser = JSON.parse(localStorage.getItem("user"));
+  console.log("user ",user); 
+  console.log("localUser ",localUser); 
   const getOrdersByUserId = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/orders`,{
+         process.env.REACT_APP_API_URL+`/api/orders`,{
           headers: {
-            Authorization: `${user.token}`,
+            Authorization: `Bearer ${ user?.token || localUser?.token }`,
+            "Content-Type": "application/json",
           }
         }
       );
-      setOrders(response.data.data);
+      console.log("respone data : ",response.data);
+      setOrders(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -35,16 +44,21 @@ export const OrderProvider = ({ children }) => {
   };
 
   // Buat fungsi create order disni
- const createOrder = async () => {
-  try {
-    const response = await axios.post(
-      "http://localhost:3001/api/orders",{
-       
-      formData, headers: {
-        Authorization: `${user.token}`,
-      }
-    },
-    );
+  const createOrder = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(
+         process.env.REACT_APP_API_URL+"/api/orders",
+        formData, 
+        {
+          headers: {
+            Authorization: `Bearer ${user?.token || localUser?.token}`,
+            "Content-Type": "application/json",
+          }
+        }
+      );
+  
+  
     console.log("respone",response.data.data);
     toast.success(response.data.message);
     setOrders(response.data.data);
@@ -56,7 +70,10 @@ export const OrderProvider = ({ children }) => {
       status:"",
       items: [],
     })
+    emptyCart();
+    setLoading(false);
   } catch (err) {
+    setLoading(false);
     console.log(err);
   }
  }
@@ -68,6 +85,7 @@ export const OrderProvider = ({ children }) => {
         order,
         formData,
         setFormData,
+        loading,
         // panggil fungsinya disini
         createOrder,
         getOrdersByUserId,

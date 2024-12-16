@@ -8,7 +8,7 @@ import ContactUsForm from "components/forms/TwoColContactUsWithIllustrationFullF
 import ContactDetails from "components/cards/ThreeColContactDetails.js";
 
 const Address = tw.span`leading-relaxed`;
-const AddressLine = tw.span`block`;
+const AddressLine = tw.span`mt-4 tracking-wide font-bold text-2xl leading-none`;
 const Email = tw.span`text-sm mt-6 block text-gray-500`;
 const Phone = tw.span`text-sm mt-0 block text-gray-500`;
 
@@ -23,80 +23,68 @@ export default () => {
       <ContactDetails
         cards={[
           {
-            title: "New York",
+            title:  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" className="w-[80px] justify-center items-center mx-auto" alt="Facebook Logo" />,
             description: (
               <>
                 <Address>
-                  <AddressLine>40 Gates Court</AddressLine>
-                  <AddressLine>Endicott, NY 13760</AddressLine>
+                  <AddressLine>WibuMERCH</AddressLine>
                 </Address>
-                <Email>contact@treact.com</Email>
-                <Phone>+1 (203) 991-6988</Phone>
+                
               </>
             )
           },
           {
-            title: "Illinois",
+            title:  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" className="w-[80px] justify-center items-center mx-auto" alt="Intragram Logo" />,
             description: (
               <>
                 <Address>
-                  <AddressLine>602 Annadale Drive</AddressLine>
-                  <AddressLine>Dekalb, IL 60115</AddressLine>
+                  <AddressLine>@WibuMERCH192</AddressLine>
                 </Address>
-                <Email>contact@treact.com</Email>
-                <Phone>+1 (203) 991-6988</Phone>
+                
               </>
             )
           },
           {
-            title: "California",
+            title: <img src="https://cdn.pixabay.com/photo/2021/06/15/12/28/tiktok-6338432_960_720.png" className="w-[80px] justify-center items-center mx-auto" alt="Intragram Logo" />,
             description: (
               <>
                 <Address>
-                  <AddressLine>96 NE. Delaware Lane</AddressLine>
-                  <AddressLine>Sacramento, CA 95820</AddressLine>
+                  <AddressLine>@WibuMERCH99</AddressLine>
                 </Address>
-                <Email>contact@treact.com</Email>
-                <Phone>+1 (203) 991-6988</Phone>
+                
               </>
             )
           },
           {
-            title: "Tennessee",
+            title:  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png" className="w-[80px] justify-center items-center mx-auto" alt="Intragram Logo" />,
             description: (
               <>
                 <Address>
-                  <AddressLine>74 Peachtree Ave.</AddressLine>
-                  <AddressLine>Dyersburg, TN 38024</AddressLine>
+                  <AddressLine>@WibuMERCH970</AddressLine>
                 </Address>
-                <Email>contact@treact.com</Email>
-                <Phone>+1 (203) 991-6988</Phone>
+                
               </>
             )
           },
           {
-            title: "New Jersey",
+            title:  <img src="https://static.vecteezy.com/system/resources/previews/023/986/704/non_2x/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.png" className="w-[80px] justify-center items-center mx-auto" alt="Intragram Logo" />,
             description: (
               <>
                 <Address>
-                  <AddressLine>8355 Summer Street</AddressLine>
-                  <AddressLine>Manchester, NJ 08759</AddressLine>
+                  <AddressLine>Wibu Merch Official</AddressLine>
                 </Address>
-                <Email>contact@treact.com</Email>
-                <Phone>+1 (203) 991-6988</Phone>
+                
               </>
             )
           },
           {
-            title: "Ohio",
+            title:  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png" className="w-[80px] justify-center items-center mx-auto" alt="Intragram Logo" />,
             description: (
               <>
                 <Address>
-                  <AddressLine>7713 Snake Hill Ave.</AddressLine>
-                  <AddressLine>Piqua, OH 45356</AddressLine>
+                  <AddressLine>+6287-7263-1923</AddressLine>
                 </Address>
-                <Email>contact@treact.com</Email>
-                <Phone>+1 (203) 991-6988</Phone>
+                
               </>
             )
           }

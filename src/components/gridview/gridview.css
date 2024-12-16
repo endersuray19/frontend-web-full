@@ -2,17 +2,34 @@
 
 .products-container {
     display: grid;
-    gap: 2rem 1.5rem;
-}
-
-@media (min-width: 992px) {
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr); /* Default 4 kolom */
+  }
+  
+  @media (max-width: 768px) {
     .products-container {
-       
+      grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk layar sedang */
     }
-}
-    
-@media (min-width: 1170px) {
+  }
+  
+  @media (max-width: 480px) {
     .products-container {
-        
+      grid-template-columns: 1fr; /* 1 kolom untuk layar kecil */
     }
-}
+  }.products-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr); /* Default 4 kolom */
+  }
+  
+  @media (max-width: 768px) {
+    .products-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk layar sedang */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .products-container {
+      grid-template-columns: 1fr; /* 1 kolom untuk layar kecil */
+    }
+  }

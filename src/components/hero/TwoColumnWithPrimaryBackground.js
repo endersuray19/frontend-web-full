@@ -21,18 +21,18 @@ const LogoLink = tw(LogoLinkBase)`text-gray-100 hocus:text-gray-300`;
 const PrimaryLink = tw(PrimaryLinkBase)`shadow-raised lg:bg-primary-400 lg:hocus:bg-primary-500`;
 
 const Container = tw(ContainerBase)``;
-const Row = tw.div`flex items-center flex-col lg:flex-row`;
-const Column = tw.div`lg:w-1/2`;
-const TextColumn = tw.div`text-center lg:text-left`;
+const Row = tw.div`flex items-center flex-col bg-[#015AAC] lg:flex-row`;
+const Column = tw.div`lg:w-1/2 `;
+const TextColumn = tw.div`text-center mx-5 lg:text-left`;
 const IllustrationColumn = tw(Column)`mt-16 lg:mt-0 lg:ml-16`;
-const Heading = tw(SectionHeading)`max-w-3xl lg:max-w-4xl lg:text-left leading-tight`;
+const Heading = tw.div`max-w-3xl text-xl  font-black tracking-wide text-center text-white lg:max-w-4xl lg:text-left leading-tight`;
 const Description = tw(SectionDescription)`mt-4 max-w-2xl text-gray-100 lg:text-base mx-auto lg:mx-0`;
-const PrimaryButton = tw(PrimaryButtonBase)`mt-8 text-sm sm:text-base px-6 py-5 sm:px-10 sm:py-5 bg-primary-400 inline-block hocus:bg-primary-500`;
+const PrimaryButton = tw.div`mt-8 bg-[#FFFFFF] text-black text-sm sm:text-base px-6 py-5 sm:px-10 sm:py-5 mb-6 rounded-md inline-block font-bold hocus:bg-gray-200`;
 const Image = tw.img`w-144 ml-auto`
 
 export default ({
-  heading = "High Performant Servers tailored to your needs",
-  description = "Our cloud provisions the best servers, with fast SSD, powerful Xeon Processors, whenever you need it. Oh, and we have 99.9% SLA",
+  heading = "Anime action figure prices more than double on overseas popularity",
+  description = "The prices of secondhand anime and manga action figures are surging due to rising costs for new ones and their increasing global ...",
   primaryButtonText = "Start Your 15 Day Free Trial",
   primaryButtonUrl = "#",
   imageSrc = serverIllustrationImageSrc,
@@ -52,24 +52,17 @@ export default ({
     </NavLinks>
   ];
   return (
-    <PrimaryBackgroundContainer>
-      <Content2Xl>
-        <Header logoLink={logoLink} links={navLinks} />
-        <Container>
-          <ContentWithVerticalPadding>
-            <Row>
+   
+            <Row className="">
               <TextColumn>
                 <Heading>{heading}</Heading>
                 <Description>{description}</Description>
                 <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>
               </TextColumn>
               <IllustrationColumn>
-                <Image src={imageSrc} />
+                <Image src="https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fcms-image-bucket-production-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com%2Fimages%2F8%2F5%2F0%2F2%2F47912058-3-eng-GB%2FCropped-1719887446photo_SXM2024061300008587.jpg?width=780&fit=cover&gravity=faces&dpr=2&quality=medium&source=nar-cms&format=auto" />
               </IllustrationColumn>
             </Row>
-          </ContentWithVerticalPadding>
-        </Container>
-      </Content2Xl>
-    </PrimaryBackgroundContainer>
+         
   );
 };

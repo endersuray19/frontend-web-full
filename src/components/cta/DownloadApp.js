@@ -54,10 +54,7 @@ export default ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Text>{text}</Text>
             <LinksContainer>
-              <Link href={link1Url}>
-                <img src={link1IconSrc} alt=""/>
-                <span>{link1Text}</span>
-              </Link>
+              
               <Link href={link2Url}>
                 <img src={link2IconSrc} alt=""/>
                 <span>{link2Text}</span>

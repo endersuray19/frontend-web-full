@@ -29,7 +29,7 @@ const Filters = () => {
   const getCategories = async()=>{
     try{
       const response = await axios.get(
-         "http://localhost:3001/api/categories",
+         process.env.REACT_APP_API_URL+"/api/Categories",
         {
           headers:{
             Authorization:`${user.token}`,
@@ -51,7 +51,7 @@ const Filters = () => {
       const getManufactures = async()=>{
         try{
           const response = await axios.get(
-            "http://localhost:3001/api/manufactures",
+             process.env.REACT_APP_API_URL+"/api/manufactures",
             {
               headers:{
                 Authorization:`${user.token}`,
@@ -74,7 +74,7 @@ const Filters = () => {
   const getSeries = async()=>{
     try{
       const response = await axios.get(
-         "http://localhost:3001/api/series",
+          process.env.REACT_APP_API_URL+"/api/series",
         {
           headers:{
             Authorization:`${user.token}`,

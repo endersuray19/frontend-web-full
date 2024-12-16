@@ -10,12 +10,15 @@ import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 
-const Container = tw.div`relative bg-white mt-5 rounded-xl shadow-md`;
+const Wrapper = tw.div`
+  flex items-center justify-center  
+`;
+const Container = tw.div`relative bg-white mt-5 lg:mt-12 lg:w-[1200px] justify-center align-middle content-center border rounded-xl shadow-md`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
 const HeadingWithControl = tw.div`flex flex-col items-center sm:items-stretch sm:flex-row justify-between`;
-const Heading = tw(SectionHeading)`text-[#015AAC]`;
-const Controls = tw.div`flex items-center`;
+const Heading = tw(SectionHeading)`ml-12 text-[#015AAC]`;
+const Controls = tw.div`mr-12 flex items-center`;
 const ControlButton = styled(PrimaryButtonBase)`
   ${tw`mt-4 sm:mt-0 first:ml-0 ml-6 rounded-full p-2`}
   svg {
@@ -125,7 +128,8 @@ export default () => {
   ]
 
   return (
-    <Container>
+    <Wrapper>
+      <Container>
       <Content>
         <HeadingWithControl>
           <Heading>Articles</Heading>
@@ -162,5 +166,7 @@ export default () => {
         </CardSlider>
       </Content>
     </Container>
+    </Wrapper>
+    
   );
 };

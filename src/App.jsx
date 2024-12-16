@@ -23,6 +23,7 @@ import { OrderProvider } from "context/order_context";
 import RestaurantLandingPage from "pages/RestaurantLandingPage";
 import Checkout from "pages/Checkout";
 import Orders from "pages/Orders";
+import Pricing from "pages/Pricing";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -56,6 +57,7 @@ export default function App() {
                       element={<DetailProduct />}
                     />
                     <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/article" element={<Pricing />} />
                     <Route path="/contact-us" element={<ContactUs />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/checkout" element={<Checkout />} />

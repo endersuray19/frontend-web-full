@@ -6,6 +6,7 @@ import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { useAuth } from "context/AuthProvider";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { login, form, setForm } = useAuth();
@@ -41,6 +42,7 @@ const LoginPage = () => {
     e.preventDefault();
     // Call the login function from useAuth
     await login();
+   
   };
 
   return (
@@ -112,11 +114,11 @@ const LoginPage = () => {
                     Forgot Password ?
                   </a>
                 </p>
-                <p className="mt-8 text-sm text-gray-600 text-center">
+                <p className="mt-8  text-sm text-gray-600 text-center">
                   Dont have an account?{" "}
                   <a
                     href={signupUrl}
-                    className="border-b border-gray-500 border-dotted"
+                    className="border-b text-black border-dotted"
                   >
                     Sign Up
                   </a>

@@ -3,7 +3,7 @@ import Product from "../products/Product";
 import "./gridview.css";
 
 const GridView = ({ products }) => {
-  const productsPerPage = 6;
+  const productsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * productsPerPage;
@@ -22,7 +22,7 @@ const GridView = ({ products }) => {
 
   return (
     <>
-      <div className="products-container grid-cols-3">
+      <div className="products-container w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {displayedProducts.map((item) => {
           console.log(item.image); // Add this to check the image data
           
@@ -30,7 +30,8 @@ const GridView = ({ products }) => {
             <Product
               key={item.id}
               image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
-              name={item.title}
+              name={item.title.length>22 ?`${item.title.slice(0,22)}...`:item.title}
+              category={item.category}
               id={item.id}
               price={item.price}
               manufacture={item.manufacture}

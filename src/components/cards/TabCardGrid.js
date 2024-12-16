@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+import {  ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { SectionHeading } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
@@ -15,9 +15,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useProductsContext } from "context/product_context";
-
+import Product from "components/products/Product";
+const Wrapper = tw.div`
+  flex items-center justify-center 
+`;
+const Container = tw.div`relative bg-white mt-5 lg:mt-12 lg:w-[1200px] justify-center align-middle content-center border rounded-xl shadow-md`;
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
-const Header = tw(SectionHeading)`text-[#015AAC]`;
+const Header = tw(SectionHeading)`text-[#015AAC] ml-4`;
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 
 const ModalContent = tw.div`bg-white p-8 rounded-lg text-center`;
@@ -35,9 +39,9 @@ const CancelButton = tw(
 const TabControl = styled.div`
   ${tw`cursor-pointer px-6 py-3 mt-2 sm:mt-0 sm:mr-2 last:mr-0 text-gray-600 font-medium rounded-sm transition duration-300 text-sm sm:text-base w-1/2 sm:w-auto text-center`}
   &:hover {
-    ${tw`bg-gray-300 text-gray-700`}
+    ${tw`bg-[#210ba7] text-white`}
   }
-  ${(props) => props.active && tw`bg-primary-500! text-gray-100!`}
+  ${(props) => props.active && tw`bg-[#015AAC]! text-gray-100!`}
   }
 `;
 
@@ -45,24 +49,27 @@ const BuyNowButton = tw(PrimaryButtonBase)`text-sm cursor-pointer`;
 
 const TabContent = tw(
   motion.div
-)`mt-6 flex flex-wrap sm:-mr-10 md:-mr-6 lg:-mr-12`;
-const CardContainer = tw.div`mt-10 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12  `;
-const Card = tw(
-  motion.a
-)`bg-gray-200 rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0 relative`;
+)`mt-6 flex flex-wrap sm:-mr-10 md:-mr-6 lg:-mr-3`;
+const CardContainer = tw.div`mt-4 w-[240px] sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-4  mx-auto lg:mx-0 `;
+
+
+
+
+const Card = tw(motion.a)`bg-gray-200 rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0 relative flex flex-col h-full`; // Ensure full height for flex layout
 
 const CardButton = tw(
   PrimaryButtonBase
-)`text-sm cursor-pointer absolute bottom-0 left-0 right-0 mx-auto`;
+)`text-sm cursor-pointer mt-auto`;  // Button at the bottom
+
 const CardImageContainer = styled.div`
   ${(props) =>
     css`
       background-image: url("${props.image}");
     `}
-  ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
+  ${tw`h-[120px] bg-center bg-cover relative rounded-t`}
   position: relative;
   overflow: hidden;
-  border-radius: 8px; /* Sesuaikan dengan kebutuhan Anda */
+  border-radius: 8px;
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -70,20 +77,27 @@ const CardImageContainer = styled.div`
   }
 
   img {
-    width: 100%;
+    width: 120px;
     height: auto;
     display: block;
+    image-rendering: auto; /* Ini untuk menghaluskan gambar */
+    filter: blur(0); /* Jika ada blur sebelumnya, pastikan diset ke 0 */
   }
 `;
 
+const CardContent = tw.div`p-4 flex-grow`; // Makes sure content grows within the card
+
+const CardTitle = tw.div`font-semibold text-xl mb-2`;  // Style for the product title
+
+const CardPrice = tw.div`text-lg text-gray-700`; // Style for the price
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-15 transform translate-x-2/3 -translate-y-12 text-pink-400`}
 `;
 const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
-  ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
+  ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-[120px] w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-export default ({ heading = "RANKING" }) => {
+export default ({ heading = "RANKING PRODUCT" }) => {
   // const {products} = useProductsContext();
   // const {getElementbyId} = useProductsContext();
   const [showModal, setShowModal] = useState(false);
@@ -94,6 +108,7 @@ export default ({ heading = "RANKING" }) => {
     "Figure",
     "Nendroid",
     "Fumo",
+    
   ]);
   const [activeTab, setActiveTab] = useState("Best Sellers");
   const { addItem, updateItemQuantity, items } = useCart();
@@ -162,7 +177,8 @@ export default ({ heading = "RANKING" }) => {
   console.log("DATA : ",products);
 
   return (
-    <Container>
+    <Wrapper>
+ <Container>
       <ContentWithPaddingXl>
         <HeaderRow>
           <Header>{heading}</Header>
@@ -206,12 +222,17 @@ export default ({ heading = "RANKING" }) => {
                   whileHover="hover"
                   animate="rest"
                 >
-                  <Link to={`/detail-product/${card.id}`}>
-                    <CardImageContainer
-                      image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card.images[0]}`}
-                      className="flex items-center justify-center"
-                    />
-                  </Link>
+                
+                  <Product
+              key={card.id}
+              image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card.images[0]}`}
+              category={card.category}
+              name={card.title.length > 25 ? `${card.title.slice(0,25)}... `:card.title}
+              id={card.id}
+              price={card.price}
+              manufacture={card.manufacture}
+            ></Product>
+                 
                   <CardButton onClick={() => openModal(card)}>
                     Buy Now
                   </CardButton>
@@ -254,6 +275,8 @@ export default ({ heading = "RANKING" }) => {
       <DecoratorBlob1 />
       <DecoratorBlob2 />
     </Container>
+    </Wrapper>
+   
   );
 };
 

@@ -4,14 +4,16 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+import {  ContentWithPaddingXl } from "components/misc/Layouts.js";
+import bannerImage from "/Users/EnderSurya/Downloads/Assigment1/frontend-react/src/images/bannerWM.exe.jpg"
+import mapImage from "/Users/EnderSurya/Downloads/Assigment1/frontend-react/src/images/map.png"
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
 import CustomizeIconImage from "images/customize-icon.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 
-const Heading = tw(SectionHeading)`text-[#015AAC]`;
+const Heading = tw(SectionHeading)`text-[#233E63] text-left text-2xl mt-5 px-5`;
 const Subheading = tw(SubheadingBase)`text-center text-[#015AAC] mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto`;
 const ThreeColumnContainer = styled.div`
@@ -20,7 +22,10 @@ const ThreeColumnContainer = styled.div`
 const Column = styled.div`
   ${tw`lg:w-1/3 max-w-xs`}
 `;
-
+const Wrapper = tw.div`
+  flex items-center justify-center  mt-2 
+`;
+const Container = tw.div`relative bg-white lg:mt-0 mb-5 lg:w-[1200px] justify-center align-middle content-center border rounded-xl shadow-md`;
 const Card = styled.a`
   ${tw`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
   .imageContainer {
@@ -127,7 +132,7 @@ export default ({
     }
   ],
   linkText = "Learn More",
-  heading = "About Us",
+  heading = "What is Wibu MERCH ?",
   subheading = "",
   description = "",
   imageContainerCss = null,
@@ -141,23 +146,56 @@ export default ({
    *  4) url - the url that the card should goto on click
    */
   return (
-    <Container>
+    <Wrapper>
+ <Container>
       <ContentWithPaddingXl>
-        {subheading && <Subheading>{subheading}</Subheading>}
+        <img className="w-full h-[300px] object-cover mx-auto rounded-lg mt-[-10px]" src={bannerImage}/>
+        
         {heading && <Heading>{heading}</Heading>}
+        <p className="text-justify px-5 mt-2 mb-2"><strong>Wibu MERCH</strong>  is a platform that offers a wide range of high-quality and affordable anime merchandise, from stylish apparel to collectible action figures. By collaborating with renowned manufacturers, Wibu Merch ensures that every product meets the highest standards and features impressive attention to detail. We provide carefully curated products for anime enthusiasts, allowing them to express their love for anime culture in a unique and stylish way.</p>
         {description && <Description>{description}</Description>}
-        <h1 className="mt-8 font-bold text-xl mb-3">Company Information</h1>
-        <ul>
-          <li><span className="font-bold">Company name:</span>  Sankyu International Co.ltd [Rock Chibi Star]</li>
-          <li><span className="font-bold">Address: 3-7-21:</span>Pantai Lepang, Jl. Subak Lepang No.16, Takmung, Kec. Banjarangkan, Kabupaten Klungkung, Bali 80752 </li>
-          <li><span className="font-bold">Manager：</span> Mato Kuroi</li>
-        </ul>
-        <h1 className="mt-8 font-bold text-xl mb-3">Rock Star Chibi</h1>
-        <p className="text-justify">"Rock Star Chibi" combines the edgy, rebellious flair of a rock star with the cute, exaggerated charm of the Japanese chibi art style, creating a unique and playful theme. A website selling anime merchandise under this concept could offer a variety of products, such as chibi-style action figures, apparel, and accessories that merge the boldness of rock culture with the cuteness of chibi characters. This fusion appeals to both anime enthusiasts and those who enjoy quirky, stylized designs, providing a fun and engaging shopping experience for fans looking to showcase their love for anime in a unique way.</p>
-        <h1 className="mt-8 font-bold text-xl mb-3">Our Location</h1>
-        <img src="https://asset.kompas.com/crops/T5V7b8NSAG4Mw4Zww6QBeRUaGvo=/38x18:740x369/750x500/data/photo/2019/09/16/5d7f574ba39a6.png" alt="" />
+        <hr className="my-4 h-1 border bg-gray-500 mx-5" />
+        <Heading>Company Information</Heading>
+        <div className="mx-5">
+        <table className="mt-3 border-collapse w-full">
+  <tr className="border-t-2 border-black px-4 py-5 font-medium">
+    <td class="w-[250px] pt-3 pb-3">Company Name</td>
+    <td class="ml-[20px] pt-3 pb-3">Wibu Merch International Co. Ltd.</td>
+  </tr>
+  <tr className="border-t-2 border-black px-4 py-2 font-medium">
+    <td class="w-[250px] pt-3 pb-3">Business</td>
+    <td class="ml-[20px] pt-3 pb-3">
+      <ul>
+        <li>Anime Merchandise Retail</li>
+        <li>E-commerce Services</li>
+      </ul>
+    </td>
+  </tr>
+  <tr className="border-t-2 border-black px-4 py-2 font-medium">
+    <td class="w-[250px] pt-3 pb-3">Headquarters</td>
+    <td class="ml-[20px] pt-3 pb-3">Wibu Merch International Co. Ltd. Chibi Tower, Level 5 Jl. Subak Lepang No.16, Takmung, Kec. Banjarangkan, Kabupaten Klungkung, Bali 80752</td>
+  </tr>
+  <tr className="border-t-2 border-black px-4 py-2 font-medium">
+    <td class="w-[250px] pt-3 pb-3">Founded</td>
+    <td class="ml-[20px] pt-3 pb-3">October 2024</td>
+  </tr>
+  <tr className="border-t-2 border-black px-4 py-2 font-medium">
+    <td class="w-[250px] pt-3 pb-3">Representative</td>
+    <td class="ml-[20px] pt-3 pb-3">Enderus Juliurus</td>
+  </tr>
+</table>
+        </div>
+        <hr className="my-4 h-1 border bg-gray-500 mx-5" />
+        <Heading>Our Location</Heading>
+        <div className="flex flex-col md:flex-row lg:flex-row">
+        <img className="w-[450px] h-[300px] object-cover ml-5 mt-5 rounded-lg" src="https://media.timeout.com/images/105986608/1024/576/image.webp" alt="" />
+        <img className="w-[450px] h-[300px] object-cover ml-5 mt-5 rounded-lg" src={mapImage} alt="" />
+        </div>
+       
       </ContentWithPaddingXl>
       <DecoratorBlob />
     </Container>
+    </Wrapper>
+   
   );
 };

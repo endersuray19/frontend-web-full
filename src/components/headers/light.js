@@ -15,7 +15,7 @@ import { useAuth } from "context/AuthProvider.js";
 
 const Header = tw.header`
   flex justify-between items-center
-  w-full mx-auto bg-white px-5 text-[#015AAC]
+  w-full mx-auto bg-white  text-[#015AAC]
 `;
 
 export const NavLinks = tw.div`flex`;
@@ -26,13 +26,13 @@ export const NavLinks = tw.div`flex`;
 export const NavLink = tw.a`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-auto
   font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+  pb-1 border-b-2 border-transparent hover:border-[#210ba7] hocus:text-[#210ba7]
 `;
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
   px-8 py-3 rounded bg-primary-500 text-gray-100
-  hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
+  hocus:bg-[#210ba7] hocus:text-gray-200 focus:shadow-outline
   border-b-0
 `;
 
@@ -105,10 +105,10 @@ export default ({
         <Link to={"/"}>Home</Link>
       </NavLink>
       <NavLink>
-        <Link to={"/products"}>Category List</Link>
+        <Link to={"/products"}>Products</Link>
       </NavLink>
       <NavLink>
-        <Link to={"/products"}>Article</Link>
+        <Link to={"/article"}>Articles</Link>
       </NavLink>
       <NavLink>
         <Link to="/about-us">About Us</Link>
@@ -143,9 +143,9 @@ export default ({
       ) : (
         <Link
           to="/login"
-          className={`px-4 py-2 text-white bg-primary-500 ${
+          className={`px-4 py-2 text-white bg-[#015AAC] ${
             roundedHeaderButton ? "rounded-full" : "rounded-lg"
-          } hover:bg-black transition`}
+          } hover:bg-[#210ba7] transition`}
         >
           Login
         </Link>

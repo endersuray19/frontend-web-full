@@ -71,16 +71,16 @@ export default () => {
             <ColumnHeading>Quick Links</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Blog</Link>
+                <Link href="/article">Articles</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">FAQs</Link>
+                <Link href="/contact-us">FAQs</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Support</Link>
+                <Link href="/contact-us">Support</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">About Us</Link>
+                <Link href="/about-us">About Us</Link>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -138,8 +138,8 @@ export default () => {
         </FiveColumns>
         <Divider/>
         <CopyrightAndCompanyInfoRow>
-          <CopyrightNotice>&copy; Copyright 2020, Treact Inc.</CopyrightNotice>
-          <CompanyInfo>An Internet Company.</CompanyInfo>
+          <CopyrightNotice>&copy; Copyright 2020, WibuMERCH Inc.</CopyrightNotice>
+          <CompanyInfo>ECOMERCE BY WIBUMERCH.</CompanyInfo>
         </CopyrightAndCompanyInfoRow>
       </Content>
     </Container>
