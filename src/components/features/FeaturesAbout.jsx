@@ -5,8 +5,8 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import {  ContentWithPaddingXl } from "components/misc/Layouts.js";
-import bannerImage from "../images/bannerWM.jpg"
-import mapImage from "/Users/EnderSurya/Downloads/Assigment1/frontend-react/src/images/map.png"
+import bannerImage from "./imageAbout/bannerWM.exe.jpg"
+import mapImage from "./imageAbout/map.png"
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
