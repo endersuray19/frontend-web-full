@@ -24,7 +24,7 @@ const GridView = ({ products }) => {
     <>
       <div className="products-container w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {displayedProducts.map((item) => {
-          console.log(item.image); // Add this to check the image data
+           // Add this to check the image data
           
           return (
             <Product

@@ -30,7 +30,7 @@ const Wrapper = tw.div`
   flex items-center justify-center min-h-screen 
 `;
 const Card = styled.a`
-  ${tw`flex flex-col items-center justify-center text-center h-full  rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-[155%]`}
+  ${tw`flex flex-col items-center justify-center text-center h-full  rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-[155%] hover:z-50`}
   
   .imageContainer {
     ${tw`flex justify-center items-center text-center rounded-full p-4 bg-gray-100`}
