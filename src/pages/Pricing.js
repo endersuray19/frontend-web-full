@@ -17,6 +17,7 @@ import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chev
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import heroImage from "../images/hero.jpg";
 import Hero from "components/hero/TwoColumnWithPrimaryBackground.js";
+import {cards} from "components/lib/article.jsx"
 const Wrapper = tw.div`
   flex items-center justify-center  
 `;
@@ -97,190 +98,72 @@ export default () => {
       },
     ]
   };
+  console.log("ini card",cards)
 
   /* Change this according to your needs */
-  const cards = [
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_16_3bc02d37-982f-45bb-bce3-428491547952.png?v=1728612626",
-      title: "Oshi no Ko will conclude with four episodes remaining.",
-      description: `It was announced on the official X account (@oshinoko_comic) that "Oshi no Ko" by Akasaka Aka and Yokoyari Mengo will be completed in the 50th issue of Weekly Young Jump (Shueisha), which will be released on November 14th."Oshi no Ko"...`,
-      author: "Nero Clanus",
-      date: "12 Desember 2023",
-      rating: "4.8",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_15_cec9389b-73a4-492f-9659-7d20872e349d.png?v=1728538386",
-      title: "Dragon Ball Daima and Lawson collaborate",
-      description: `To celebrate the broadcast of the TV anime "Dragon Ball DAIMA" based on the original work by Akira Toriyama, a campaign will be held at Lawson stores, excluding some stores, from October.Grape jelly with a glass will be sold from...`,
-      author: "Ibiza Supain",
-      date: "12 Oktober 2029",
-      rating: 4.9,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_14_dfc85f70-438d-4d7f-b3a1-f85bd903f365.png?v=1728027310",
-      title: `"Fate/Zero" to be made into a musical!`,
-      description: `It has been decided that "Fate/Zero" will be made into a musical. It will be performed in Tokyo and Osaka from January to February 2025.Since the release of the PC game "Fate/stay night" in 2004, the "Fate" series has been...`,
-      author: "Palo Alto C.A",
-      date: " 19 Januari 2090",
-      rating: "5.0",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_13_4747768e-b75d-4f9b-966c-54a8a4c63938_585x313_crop_center.png?v=1728027054",
-      title: `"Urusei Yatsura" Exhibition`,
-      description: `The "TV Anime Urusei Yatsura Exhibition" is based on the concept of "Girl Hunt with Ataru!!". A large visual of Lum greets visitors, and messages from Takahashi and the exhibition organizers are posted as they proceed further. In the pre-show...`,
-      author: "Arizoni",
-      date: " 9 September 2012",
-      rating: 4.5,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_16_3bc02d37-982f-45bb-bce3-428491547952.png?v=1728612626",
-      title: "Oshi no Ko will conclude with four episodes remaining.",
-      description: `It was announced on the official X account (@oshinoko_comic) that "Oshi no Ko" by Akasaka Aka and Yokoyari Mengo will be completed in the 50th issue of Weekly Young Jump (Shueisha), which will be released on November 14th."Oshi no Ko"...`,
-      author: "Nero Clanus",
-      date: "12 Desember 2023",
-      rating: "4.8",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_15_cec9389b-73a4-492f-9659-7d20872e349d.png?v=1728538386",
-      title: "Dragon Ball Daima and Lawson collaborate",
-      description: `To celebrate the broadcast of the TV anime "Dragon Ball DAIMA" based on the original work by Akira Toriyama, a campaign will be held at Lawson stores, excluding some stores, from October.Grape jelly with a glass will be sold from...`,
-      author: "Ibiza Supain",
-      date: "12 Oktober 2029",
-      rating: 4.9,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_14_dfc85f70-438d-4d7f-b3a1-f85bd903f365.png?v=1728027310",
-      title: `"Fate/Zero" to be made into a musical!`,
-      description: `It has been decided that "Fate/Zero" will be made into a musical. It will be performed in Tokyo and Osaka from January to February 2025.Since the release of the PC game "Fate/stay night" in 2004, the "Fate" series has been...`,
-      author: "Palo Alto C.A",
-      date: " 19 Januari 2090",
-      rating: "5.0",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_13_4747768e-b75d-4f9b-966c-54a8a4c63938_585x313_crop_center.png?v=1728027054",
-      title: `"Urusei Yatsura" Exhibition`,
-      description: `The "TV Anime Urusei Yatsura Exhibition" is based on the concept of "Girl Hunt with Ataru!!". A large visual of Lum greets visitors, and messages from Takahashi and the exhibition organizers are posted as they proceed further. In the pre-show...`,
-      author: "Arizoni",
-      date: " 9 September 2012",
-      rating: 4.5,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_16_3bc02d37-982f-45bb-bce3-428491547952.png?v=1728612626",
-      title: "Oshi no Ko will conclude with four episodes remaining.",
-      description: `It was announced on the official X account (@oshinoko_comic) that "Oshi no Ko" by Akasaka Aka and Yokoyari Mengo will be completed in the 50th issue of Weekly Young Jump (Shueisha), which will be released on November 14th."Oshi no Ko"...`,
-      author: "Nero Clanus",
-      date: "12 Desember 2023",
-      rating: "4.8",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_15_cec9389b-73a4-492f-9659-7d20872e349d.png?v=1728538386",
-      title: "Dragon Ball Daima and Lawson collaborate",
-      description: `To celebrate the broadcast of the TV anime "Dragon Ball DAIMA" based on the original work by Akira Toriyama, a campaign will be held at Lawson stores, excluding some stores, from October.Grape jelly with a glass will be sold from...`,
-      author: "Ibiza Supain",
-      date: "12 Oktober 2029",
-      rating: 4.9,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_14_dfc85f70-438d-4d7f-b3a1-f85bd903f365.png?v=1728027310",
-      title: `"Fate/Zero" to be made into a musical!`,
-      description: `It has been decided that "Fate/Zero" will be made into a musical. It will be performed in Tokyo and Osaka from January to February 2025.Since the release of the PC game "Fate/stay night" in 2004, the "Fate" series has been...`,
-      author: "Palo Alto C.A",
-      date: " 19 Januari 2090",
-      rating: "5.0",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_13_4747768e-b75d-4f9b-966c-54a8a4c63938_585x313_crop_center.png?v=1728027054",
-      title: `"Urusei Yatsura" Exhibition`,
-      description: `The "TV Anime Urusei Yatsura Exhibition" is based on the concept of "Girl Hunt with Ataru!!". A large visual of Lum greets visitors, and messages from Takahashi and the exhibition organizers are posted as they proceed further. In the pre-show...`,
-      author: "Arizoni",
-      date: " 9 September 2012",
-      rating: 4.5,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_16_3bc02d37-982f-45bb-bce3-428491547952.png?v=1728612626",
-      title: "Oshi no Ko will conclude with four episodes remaining.",
-      description: `It was announced on the official X account (@oshinoko_comic) that "Oshi no Ko" by Akasaka Aka and Yokoyari Mengo will be completed in the 50th issue of Weekly Young Jump (Shueisha), which will be released on November 14th."Oshi no Ko"...`,
-      author: "Nero Clanus",
-      date: "12 Desember 2023",
-      rating: "4.8",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_15_cec9389b-73a4-492f-9659-7d20872e349d.png?v=1728538386",
-      title: "Dragon Ball Daima and Lawson collaborate",
-      description: `To celebrate the broadcast of the TV anime "Dragon Ball DAIMA" based on the original work by Akira Toriyama, a campaign will be held at Lawson stores, excluding some stores, from October.Grape jelly with a glass will be sold from...`,
-      author: "Ibiza Supain",
-      date: "12 Oktober 2029",
-      rating: 4.9,
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_14_dfc85f70-438d-4d7f-b3a1-f85bd903f365.png?v=1728027310",
-      title: `"Fate/Zero" to be made into a musical!`,
-      description: `It has been decided that "Fate/Zero" will be made into a musical. It will be performed in Tokyo and Osaka from January to February 2025.Since the release of the PC game "Fate/stay night" in 2004, the "Fate" series has been...`,
-      author: "Palo Alto C.A",
-      date: " 19 Januari 2090",
-      rating: "5.0",
-    },
-    {
-      imageSrc: "https://ninoma.com/cdn/shop/articles/Chance_13_4747768e-b75d-4f9b-966c-54a8a4c63938_585x313_crop_center.png?v=1728027054",
-      title: `"Urusei Yatsura" Exhibition`,
-      description: `The "TV Anime Urusei Yatsura Exhibition" is based on the concept of "Girl Hunt with Ataru!!". A large visual of Lum greets visitors, and messages from Takahashi and the exhibition organizers are posted as they proceed further. In the pre-show...`,
-      author: "Arizoni",
-      date: " 9 September 2012",
-      rating: 4.5,
-    },
-  ]
+  
   return (
     <AnimationRevealPage>
       <Header />
       <Wrapper>
       <Container>
-      <Content>
+     
        
           <Heading>Articles</Heading>
-       
-          <Hero
-        heading={
-          <>
-          {"Anime action figure prices more than double on overseas popularity "}
+          <div className="flex items-start border-b border-gray-200 py-4">
+      {/* Image Section */}
+      <div className="w-1/2">
+        <img
+          src="https://resize.cdn.otakumode.com/ex/640.400/u/0abbc2a4fc7d4d8ebae9ba6523cd7b2b.jpg.webp"
+          alt="Skip and Loafer"
+          className="w-full h-auto rounded-md"
+        />
+      </div>
+
+      {/* Content Section */}
+      <div className="w-2/2 pl-6">
+        {/* Category */}
+        <div className="text-xs font-bold text-pink-500 uppercase mb-2">
+          Anime
+        </div>
+
+        {/* Title */}
+        <h2 className="text-lg font-bold text-gray-800 mb-2">
+          Skip and Loafer Gets Season 2!
+        </h2>
+
+        {/* Description */}
+        <p className="text-sm text-gray-600 mb-4">
+          We can't wait to see Mitsumi and Sousuke again! | Skip and Loafer Gets
+          Season 2!
+        </p>
+
+        {/* Time */}
+        <div className="text-xs text-gray-400">6 hours ago</div>
+      </div>
+    </div>
           
-          </>
-        }
-        description={`The prices of secondhand anime and manga action figures are surging due to rising costs for new ones and their increasing globalSoaring prices for raw materials are driving up the costs of making new products ...`}
-        imageSrc={"https://ninoma.com/cdn/shop/articles/Chance_12_40736d96-5f5d-4f0f-b69a-2e20c5510845_585x313_crop_center.png?v=1728026740"}
-        imageCss="{imageCss}"
-        imageDecoratorBlob={true}
-        primaryButtonText="Read Now"
-        watchVideoButtonText="See Our Collection"
-      />
-        <div className=" flex flex-wrap mx-auto pt-2 justify-center gap-2">
-        {cards.map((card, index) => (
-            <Card key={index}>
-              <CardImage imageSrc={card.imageSrc} />
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{card.title.length >70 ? `${card.title.substring(0, 70)}...` : card.title}</Title>
-                  
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  <IconWithText>
-                    <IconContainer>
-                      <LocationIcon />
-                    </IconContainer>
-                    <Text>{card.author}</Text>
-                  </IconWithText>
-                  <IconWithText>
-                    <Text>{card.date}</Text>
-                  </IconWithText>
-                </SecondaryInfoContainer>
-                <Description>{card.description.length > 200 ? `${card.description.substring(0, 200)}...` : card.description}</Description>
-              </TextInfo>
-              <PrimaryButton>Read Now</PrimaryButton>
-            </Card>
+        <div className=" bg-gray-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {cards && cards.map((card, index) => (
+           <div className="w-full h-full px-3 mt-2 bg-gray items-center justify-center hover:scale-110 hover:bg-white" key={index}>
+           
+            <img
+                              src={card.imageSrc}
+                              alt={card.name || "Product Image"}
+                              className="w-full h-[200px]   items-center"
+                            />
+            <p className="text-gray-400">{card.author}</p>
+           <h1 className="text-black text-xl">{card.title.length >45 ?`${card.title.slice(0,45)}...`: card.title}</h1>
+           <p className="text-gray-700 text-sm">{card.description.length > 70 ? `${card.description.slice(0,70)}...`: card.description}</p>
+           <p className="text-gray-400">{card.date}</p>
+
+            
+           </div>
           ))}
         </div>
        
       
-      </Content>
+      
     </Container>
     </Wrapper>
       <Footer/>
