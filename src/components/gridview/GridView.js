@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Product from "../products/Product";
 import "./gridview.css";
 
-const GridView = ({ products }) => {
+const GridView = ({ products,showPagination=true }) => {
   const productsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -36,9 +36,10 @@ const GridView = ({ products }) => {
               price={item.price}
               manufacture={item.manufacture}
             ></Product>
-          );
+          )
         })}
       </div>
+      {showPagination && (
       <div className="pagination-buttons flex justify-between mt-10">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           Previous
@@ -48,6 +49,7 @@ const GridView = ({ products }) => {
           Next
         </button>
       </div>
+      )}
     </>
   );
 };

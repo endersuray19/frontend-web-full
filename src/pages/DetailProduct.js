@@ -14,8 +14,9 @@ import { useProductsContext } from "context/product_context";
 import { data } from "helpers/Utils";
 import { spread } from "axios";
 import Swal from "sweetalert2";
+import GridView from "components/gridview/GridView";
 const DetailProduct = () => {
-  const {product, getProductById, setProduct} = useProductsContext();
+  const {product,products, getProductById, setProduct} = useProductsContext();
   const { id } = useParams();
   const { addItem, items, updateItemQuantity } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -257,7 +258,23 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
               
             </ProductInfo>
           </div>
+          
         </Content>
+        <hr className="my-4 h-1 border bg-gray-500" />
+        <div className="md:flex mt-5 md:space-x-10 md:mx-auto">
+            <div>
+             <h1 className="text-2xl font-bold mb-5">More Stuff Like This</h1>
+             <div className="justify-center items-center grid-cols-3">
+              {product.serie ?(
+                <GridView products={products.filter((item)=>item.serie?.id===product.serie.id).slice(0,4)} showPagination={false} />
+              ):(
+                <p>No Related Product</p>
+              )}
+             
+             </div>
+            
+           </div>
+          </div>
       </Container>
       {showModal && (
         <>
