@@ -112,50 +112,55 @@ export default () => {
           <Heading>Articles</Heading>
           <div className="flex items-start border-b border-gray-200 py-4">
       {/* Image Section */}
-      <div className="w-1/2">
+      <div className="w-2/4">
         <img
           src="https://resize.cdn.otakumode.com/ex/640.400/u/0abbc2a4fc7d4d8ebae9ba6523cd7b2b.jpg.webp"
           alt="Skip and Loafer"
-          className="w-full h-auto rounded-md"
+          className="w-full h-[280px] rounded-md"
         />
       </div>
 
       {/* Content Section */}
-      <div className="w-2/2 pl-6">
+      <div className="w-2/4 pl-6">
         {/* Category */}
-        <div className="text-xs font-bold text-pink-500 uppercase mb-2">
-          Anime
+        <div className="text-sm  text-gray-400  mb-2">
+          Randy Clacker
         </div>
 
         {/* Title */}
-        <h2 className="text-lg font-bold text-gray-800 mb-2">
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">
           Skip and Loafer Gets Season 2!
         </h2>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-md text-gray-600 mb-4">
           We can't wait to see Mitsumi and Sousuke again! | Skip and Loafer Gets
           Season 2!
+          Skip and Loafer is the TV anime adaptation of the manga by Misaki Takamatsu that is currently being serialized in Monthly Afternoon.
+
+The first season aired from April 2023. Continuing from season 1, P.A. WORKS will be producing the anime.
+
+Misaki Takamatsu also drew a brand new illustration to celebrate the announcement.
         </p>
 
         {/* Time */}
-        <div className="text-xs text-gray-400">6 hours ago</div>
+        <div className="text-md text-gray-400">Dec. 19, 2024</div>
       </div>
     </div>
           
-        <div className=" bg-gray-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className=" bg-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {cards && cards.map((card, index) => (
-           <div className="w-full h-full px-3 mt-2 bg-gray items-center justify-center hover:scale-110 hover:bg-white" key={index}>
+           <div className="w-full h-full px-3 mt-2 bg-gray items-center justify-center hover:scale-110 rounded-md hover:bg-white" key={index}>
            
             <img
                               src={card.imageSrc}
                               alt={card.name || "Product Image"}
                               className="w-full h-[200px]   items-center"
                             />
-            <p className="text-gray-400">{card.author}</p>
-           <h1 className="text-black text-xl">{card.title.length >45 ?`${card.title.slice(0,45)}...`: card.title}</h1>
+            <p className="text-gray-400 text-xs">{card.author}</p>
+           <h1 className="text-black text-md font-bold">{card.title.length >56 ?`${card.title.slice(0,56)}...`: card.title}</h1>
            <p className="text-gray-700 text-sm">{card.description.length > 70 ? `${card.description.slice(0,70)}...`: card.description}</p>
-           <p className="text-gray-400">{card.date}</p>
+           <p className="text-gray-400 text-xs">{card.date}</p>
 
             
            </div>

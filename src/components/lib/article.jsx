@@ -97,9 +97,9 @@ export const cards = [
     {
       imageSrc: "https://resize.cdn.otakumode.com/ex/500.500/u/ae74241cb93642f392a9617999490725.jpg.webp",
       title: `Kaguya-sama and Oshi no Ko Author's New Manga Renai Daiko to Debut in One Week!`,
-      description: `Apr. 20, 2023 `,
+      description: ` Aka Akasaka, the author behind popular manga like Kaguya-sama: Love Is War and Oshi no Ko, is launching a new series titled Renai Daiko on April 27!`,
       author: "Ysolda",
-      date: "Aka Akasaka, the author behind popular manga like Kaguya-sama: Love Is War and Oshi no Ko, is launching a new series titled Renai Daiko on April 27!",
+      date: "Apr. 20, 2023",
       rating: 4.5,
     },
     

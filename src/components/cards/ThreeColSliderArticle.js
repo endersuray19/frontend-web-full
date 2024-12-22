@@ -139,30 +139,24 @@ export default () => {
           </Controls>
         </HeadingWithControl>
         <CardSlider ref={setSliderRef} {...sliderSettings}>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <CardImage imageSrc={card.imageSrc} />
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{card.title}</Title>
+            
+                  {cards && cards.map((card, index) => (
+                     <div className="w-full h-full px-3 mt-2 bg-gray items-center justify-center hover:scale-110 rounded-md hover:bg-white" key={index}>
+                     
+                      <img
+                                        src={card.imageSrc}
+                                        alt={card.name || "Product Image"}
+                                        className="w-full h-[200px]   items-center"
+                                      />
+                      <p className="text-gray-400 text-xs">{card.author}</p>
+                     <h1 className="text-black text-md font-bold">{card.title.length >56 ?`${card.title.slice(0,56)}...`: card.title}</h1>
+                     <p className="text-gray-700 text-sm">{card.description.length > 70 ? `${card.description.slice(0,70)}...`: card.description}</p>
+                     <p className="text-gray-400 text-xs">{card.date}</p>
+          
+                      
+                     </div>
+                    ))}
                   
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  <IconWithText>
-                    <IconContainer>
-                      <LocationIcon />
-                    </IconContainer>
-                    <Text>{card.author}</Text>
-                  </IconWithText>
-                  <IconWithText>
-                    <Text>{card.date}</Text>
-                  </IconWithText>
-                </SecondaryInfoContainer>
-                <Description>{card.description}</Description>
-              </TextInfo>
-              <PrimaryButton>Read Now</PrimaryButton>
-            </Card>
-          ))}
         </CardSlider>
       </Content>
     </Container>
