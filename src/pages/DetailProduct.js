@@ -266,9 +266,16 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
              <h1 className="text-2xl font-bold mb-5">More Stuff Like This</h1>
              <div className="justify-center items-center grid-cols-3">
               {product.serie ?(
-                <GridView products={products.filter((item)=>item.serie?.id===product.serie.id).slice(0,4)} showPagination={false} />
-              ):(
-                <p>No Related Product</p>
+                <GridView products={products.filter((item)=>item.serie?.id===product.serie.id && item.id !== product.id).slice(0,4)} showPagination={false} />
+              )
+              :product.manufacture?(
+                <GridView products={products.filter((item)=>item.manufacture?.id===product.manufacture.id && item.id !== product.id).slice(0,4)} showPagination={false} />
+              ):
+              product.Category?(
+                <GridView products={products.filter((item)=>item.Category?.id===product.Category.id && item.id !== product.id).slice(0,4)} showPagination={false} />
+              ):
+              (
+                <GridView products={products.slice(0,4)} showPagination={false} />
               )}
              
              </div>
