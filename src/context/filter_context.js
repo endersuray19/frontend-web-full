@@ -66,6 +66,8 @@ export const FilterProvider = ({ children }) => {
     if (name === "serie") {
       value = e.target.textContent;
     }
+    console.log("name",name)
+    console.log("value",value)
     if (name === "color") {
       value = e.target.dataset.color;
     }
@@ -77,6 +79,7 @@ export const FilterProvider = ({ children }) => {
     }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
+  
   const clearFilters = () => {
     dispatch({ type: CLEAR_FILTERS });
   };

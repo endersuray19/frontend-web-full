@@ -56,8 +56,8 @@ const Cart = () => {
                   <div className="info px-5 py-2 mt-1">
                       <h1>Name: {item.title}</h1>
                       <h1>Category: {item.category.name}</h1>
-                      <h1>Price: {item.price}</h1>
-                      <h1>Total Price: {item.itemTotal}</h1>
+                      <h1>Price: {formatPrice(item.price)}</h1>
+                      <h1>Total Price: {formatPrice(item.itemTotal)}</h1>
                     </div>
               </div>
               <div className="flex flex-col items-end gap-3">
@@ -90,7 +90,7 @@ const Cart = () => {
             </div>
             <div className="bg-white w-full shadow-xl rounded-xl mt-5 px-5 py-3 items-center">
             <div className="flex items-start gap-10">
-            <h1 className="font-bold mt-5">Total Item Price : {totalPrice}</h1>
+            <h1 className="font-bold mt-5">Total Item Price : {formatPrice(totalPrice)}</h1>
             <div className="buttton float-left text-left mx-0 px-5 py-5">
             </div>
             <div className="flex flex-col items-end gap-3">

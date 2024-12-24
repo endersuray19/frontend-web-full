@@ -3,7 +3,7 @@ import { useCart } from "react-use-cart";
 import Header from "../components/headers/light";
 import Footer from "../components/footers/FiveColumnWithInputForm.js";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaUser } from "react-icons/fa";
@@ -22,7 +22,7 @@ const Checkout = () => {
   const { createOrder, formData, setFormData } = useOrderContext();
   const user = JSON.parse(localStorage.getItem("user"));
   const totalPrice = cartTotal;
-
+  const redirect = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -32,17 +32,24 @@ const Checkout = () => {
   };
 
   const handleCheckOut = async () => {
-    const response = await createOrder();
-    emptyCart();
-    if (response.success) {
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Order Berhasil, Silahkan Cek Email Anda Untuk Pembayaran",
-      })
-    } else {
-      toast.error("Order failed!");
+    try{
+      const response = await createOrder();
+     
+      console.log("ini respone : ", response)
+      if(response.status === 201){
+        toast.success("order berhasil masuk");
+        redirect("/orders")
+        emptyCart();
+      }
+      else{
+        toast.error("order gagal masuk");
+      }
+     
     }
+    catch(error){
+      console.log(error);
+    }
+    
   };
 
   const calculateProductsTotal = () => {

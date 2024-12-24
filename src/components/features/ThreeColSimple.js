@@ -13,6 +13,7 @@ import CustomizeIconImage from "images/customize-icon.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useFilterContext } from "context/filter_context";
 
 const Heading = tw(SectionHeading)`mb-2 text-[#015AAC] text-3xl px-5 lg:text-4xl`;
 const Subheading = tw(SubheadingBase)`text-center text-[#015AAC] mb-3`;
@@ -75,12 +76,28 @@ export default ({
    *  3) description - the description of the card
    *  4) url - the url that the card should goto on click
    */
-  const [serie, setSerie ] = useState([]);
+  const [series, setSeries ] = useState([]);
+   const {
+      filters: {
+        text,
+        category,
+        manufacture,
+        color,
+        min_price,
+        price,
+        serie,
+        max_price,
+        shipping,
+      },
+      updateFilters,
+      all_products,
+      clearFilters,
+    } = useFilterContext();
   const fetchSerie = async () => {
     try {
       const res = await axios.get( process.env.REACT_APP_API_URL+"/api/series");
       console.log("series:", res.data.data); // Debugging log
-      setSerie(res.data.data); // Assuming res.data.data is an array
+      setSeries(res.data.data); // Assuming res.data.data is an array
     } catch (err) {
       console.error("Error fetching data:", err);
     }
@@ -95,21 +112,43 @@ export default ({
       <ContentWithPaddingXl>
         {heading && <Heading>{heading}</Heading>}
         <ThreeColumnContainer>
-          {serie.map((card, i) => (
-              <Card href={card.url} key={i}>
-              <Link to={ process.env.REACT_APP_API_URL+`/api/series/${card.id}`}>
+          {series.map((card, i) => (
+            //   <button href="/products" key={i} onClick={updateFilters}  name="serie"
+            //   className={`${
+            //     serie === card.toLowerCase()
+            //   }`} type="button">
+            //   <Link to="/products" >
               
-              <span className="w-[150px] flex flex-col items-center">
-              <img 
-                src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
-                alt="" 
-                className="rounded-full w-[120px] h-[120px] shadow-xl" 
-              />
-              <span className="title mt-4">{card.name}</span>
-            </span>
-              </Link>
+            //   <span className="w-[150px] flex flex-col items-center">
+            //   <img 
+            //     src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+            //     alt="" 
+            //     className="rounded-full w-[120px] h-[120px] shadow-xl" 
+            //   />
+            //   <span className="title mt-4">{card.name}</span>
+            // </span>
+            //   </Link>
                
-              </Card>
+            //   </button>
+            <div className="hover:scale-[150%] hover:z-30 w-[150px] flex flex-col items-center mr-5 mt-2 hover:bg-white">
+            <img 
+                 src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+                alt="" 
+               className="rounded-full w-[120px] h-[120px] shadow-xl " 
+              />
+            <Link to="/products" key={i}
+            onClick={updateFilters}
+            type="button"
+            name="serie"
+            className={`${
+              serie === card.name.toLowerCase()
+            } text-center mt-2 px-2 py-3 rounded-lg font-normal hover:font-bold `} >
+                   {card.name}
+                     
+                    </Link>
+                    </div>
+                    
+                    
           ))}
         </ThreeColumnContainer>
       </ContentWithPaddingXl>

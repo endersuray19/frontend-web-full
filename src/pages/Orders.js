@@ -38,8 +38,8 @@ const Orders = () => {
   const orderPerPage = 4;
   const indexOfLastOrder = currentPage * orderPerPage;
   const indexOfFirstOrder = indexOfLastOrder - orderPerPage;
-  const currentPages = orders.slice(indexOfFirstOrder,indexOfLastOrder);
-  const totalPages = Math.ceil(orders.length/orderPerPage);
+  const currentPages = orders?.slice(indexOfFirstOrder,indexOfLastOrder);
+  const totalPages = Math.ceil(orders?.length/orderPerPage);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -57,7 +57,7 @@ const Orders = () => {
         <Container>
           <Content>
           <div>
-  {Array.isArray(currentPages) && currentPages.length > 0 ? (
+  {Array.isArray(currentPages) && currentPages?.length > 0 ? (
     <div className="space-y-8">
       {currentPages.map((order) => (
                 
@@ -87,7 +87,7 @@ const Orders = () => {
                       <h3 className="text-lg font-medium text-gray-700 mb-2">Items:</h3>
                  
                      <div className="bg-white grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 ">
-                      {Array.isArray(order.items) && order.items.length > 0 ? (
+                      {Array.isArray(order.items) && order.items?.length > 0 ? (
                         order.items.map((item, index) => (
                           <div
                             key={index}
@@ -115,7 +115,7 @@ const Orders = () => {
                         <div className="font-bold">
                           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
                             <div><p className="text-gray-600">Total Item</p></div>
-                            <div><p className="text-gray-600">Total</p></div>
+                            <div><p className="text-gray-600">Total Price</p></div>
                           </div>
                           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
                             <div><p className="text-gray-600">{order.items.reduce((total,item)=>total+item.quantity,0)}</p></div>

@@ -58,8 +58,6 @@ export const OrderProvider = ({ children }) => {
         }
       );
   
-  
-    console.log("respone",response.data.data);
     toast.success(response.data.message);
     setOrders(response.data.data);
     setFormData({
@@ -70,8 +68,8 @@ export const OrderProvider = ({ children }) => {
       status:"",
       items: [],
     })
-    emptyCart();
     setLoading(false);
+    return response;
   } catch (err) {
     setLoading(false);
     console.log(err);

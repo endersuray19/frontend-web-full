@@ -12,6 +12,7 @@ import CustomizeIconImage from "images/customize-icon.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useFilterContext } from "context/filter_context";
 
 const Heading = tw(SectionHeading)`text-[#015AAC]`;
 const Subheading = tw(SubheadingBase)`text-center text-[#015AAC] mb-3`;
@@ -93,19 +94,35 @@ export default ({
    *  3) description - the description of the card
    *  4) url - the url that the card should goto on click
    */
-  const [serie, setSerie ] = useState([]);
-  const fetchSerie = async () => {
+  const [categories, setCategory ] = useState([]);
+   const {
+        filters: {
+          text,
+          category,
+          manufacture,
+          color,
+          min_price,
+          price,
+          serie,
+          max_price,
+          shipping,
+        },
+        updateFilters,
+        all_products,
+        clearFilters,
+      } = useFilterContext();
+  const fetchCategory = async () => {
     try {
       const res = await axios.get( process.env.REACT_APP_API_URL+"/api/Categories");
       console.log("categories:", res.data.data); // Debugging log
-      setSerie(res.data.data); // Assuming res.data.data is an array
+      setCategory(res.data.data); // Assuming res.data.data is an array
     } catch (err) {
       console.error("Error fetching data:", err);
     }
   };
 
   useEffect(() => {
-    fetchSerie();
+    fetchCategory();
   }, []);
   return (
     <div>
@@ -120,10 +137,10 @@ export default ({
         
         {description && <Description>{description}</Description>}
         <ThreeColumnContainer>
-          {serie.map((card, i) => (
+          {categories.map((card, i) => (
             <Column key={i}>
-              <Card href={card.url}>
-              <Link to={ process.env.REACT_APP_API_URL+`/api/Categories/${card.id}`}>
+              <Card >
+              {/* <Link to={ process.env.REACT_APP_API_URL+`/api/Categories/${card.id}`}>
               
               <span className="w-[140px] flex flex-col items-center">
               <img 
@@ -133,8 +150,26 @@ export default ({
               />
               <span className="bg-white title mt-4">{card.name}</span>
             </span>
-              </Link>
-               
+            
+              </Link> */}
+              <span className="w-[140px] flex flex-col items-center">
+              <img 
+                src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+                alt="" 
+                className=" w-[150px] h-[140px] shadow-sm" 
+              />
+               <Link to="/products"
+                      key={i}
+                      onClick={updateFilters}
+                      type="button"
+                      name="category"
+                      className={`${
+                        category === card.name.toLowerCase() ? "active" : null
+                      }  mt-4 hover:text-2xl hover:font-bold`}
+                    >
+                      {card.name}
+                    </Link>
+                    </span>
               </Card>
             </Column>
           ))}
