@@ -57,7 +57,7 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
   const QuantityButton = tw.button`text-2xl font-bold focus:outline-none`;
   const QuantityDisplay = tw.div`bg-white border rounded-md px-4 py-2 text-lg font-bold`;
   const CancelButton = tw.button`text-sm mt-4 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md ml-5 focus:outline-none cursor-pointer`;
-  
+  const [loading, setLoading] = useState(true);
   const handleAddToCart = () => {
     if (!selectedItem) return;
     const quantityNumber = Number(quantity);
@@ -112,7 +112,19 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
   };
   
   useEffect(() => {
-    getProductById(id);
+    setLoading(true); 
+    Swal.fire({
+      title: "Loading",
+      text: "Please wait while we fetch the product details...",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    getProductById(id).then(() => {
+      setLoading(false); 
+      Swal.close(); 
+    });
   }, [id]);
 
   const handleChangePrice = () => {

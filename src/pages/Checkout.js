@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import { useOrderContext } from "context/order_context";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Checkout = () => {
   const { cartTotal, addItem, removeItem, items, updateItemQuantity, emptyCart } = useCart();
@@ -23,6 +24,7 @@ const Checkout = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const totalPrice = cartTotal;
   const redirect = useNavigate();
+  const [loading, setLoading] = useState(true);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -32,16 +34,30 @@ const Checkout = () => {
   };
 
   const handleCheckOut = async () => {
+    setLoading(true); 
+    Swal.fire({
+      title: "Loading",
+      text: "Please wait while order is being processed...",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
     try{
       const response = await createOrder();
-     
       console.log("ini respone : ", response)
       if(response.status === 201){
+         setLoading(false); 
+              Swal.close(); 
         toast.success("order berhasil masuk");
+        
         redirect("/orders")
         emptyCart();
+        
       }
       else{
+         setLoading(false); 
+              Swal.close(); 
         toast.error("order gagal masuk");
       }
      

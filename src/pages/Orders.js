@@ -8,10 +8,12 @@ import { useOrderContext } from "context/order_context";
 import { formatPrice } from "helpers/helpers";
 import { useCart } from "react-use-cart";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Orders = () => {
   const { cartTotal, addItem, removeItem, items, updateItemQuantity, emptyCart } = useCart();
   const totalPrice = cartTotal;
+    const [loading, setLoading] = useState(true);
   const Wrapper = tw.div`
     flex items-center justify-center mt-2
   `;
@@ -31,7 +33,19 @@ const Orders = () => {
     }, 0);
   }
   useEffect(() => {
-    getOrdersByUserId(id);
+    setLoading(true); 
+        Swal.fire({
+          title: "Loading",
+          text: "Please wait while we fetch the product details...",
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+    getOrdersByUserId(id).then(() => {
+          setLoading(false); 
+          Swal.close(); 
+        });
   }, [id]);
   const [currentPage, setCurrentPage] = useState(1);
 
