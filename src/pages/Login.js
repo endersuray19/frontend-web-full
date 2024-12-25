@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import illustration from "images/login-illustration.svg";
 import logo from "images/logo.svg";
@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { login, form, setForm } = useAuth();
-
+  const [loading, setLoading] = useState(true)
   const logoLinkUrl = "#";
   const illustrationImageSrc = illustration;
   const headingText = "Sign In To Treact";
@@ -40,8 +40,27 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call the login function from useAuth
-    await login();
+     setLoading(true); 
+      
+       Swal.fire({
+        title: "Loading",
+        text: "Please wait while we sign you in...",
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); 
+        },
+    });
+
+   
+    try {
+        await login();
+        setLoading(false);  
+        Swal.close(); 
+    } catch (error) {
+        setLoading(false);  
+        Swal.close(); 
+        Swal.fire("Error", "Login failed. Please try again.", "error");
+    }
    
   };
 
