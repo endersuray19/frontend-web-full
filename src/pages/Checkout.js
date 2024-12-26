@@ -37,7 +37,7 @@ const Checkout = () => {
     setLoading(true); 
     Swal.fire({
       title: "Loading",
-      text: "Please wait while order is being processed...",
+      text: "Please wait while your order is being processed...",
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
@@ -49,7 +49,7 @@ const Checkout = () => {
       if(response.status === 201){
          setLoading(false); 
               Swal.close(); 
-        toast.success("order berhasil masuk");
+        toast.success("order successfully");
         
         redirect("/orders")
         emptyCart();
@@ -58,7 +58,7 @@ const Checkout = () => {
       else{
          setLoading(false); 
               Swal.close(); 
-        toast.error("order gagal masuk");
+        toast.error("order failed");
       }
      
     }

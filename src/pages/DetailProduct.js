@@ -227,7 +227,12 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
                 >
                   +
                 </QuantityButton>
-                <AddToCartButton onClick={openModal}>Add to Cart</AddToCartButton>
+                {product?.stock ===0 ?(
+                  <button className="bg-red-700 text-white px-6 py-3 rounded-md mt-4  transition duration-300" onClick={openModal} disabled>Out of Stock</button>
+                ):(
+                  <AddToCartButton onClick={openModal} >Add to Cart</AddToCartButton>
+                )}
+                
               </QuantityControl>
               <div>
               <hr className="my-4 h-1 border bg-gray-500" />

@@ -13,7 +13,7 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(true)
   const logoLinkUrl = "#";
   const illustrationImageSrc = illustration;
-  const headingText = "Sign In To Treact";
+  const headingText = "Sign In To Wibu MERCH";
   const socialButtons = [
     {
       iconImageSrc: googleIconImageSrc,

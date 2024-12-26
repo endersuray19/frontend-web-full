@@ -70,7 +70,7 @@ export default ({ headingText = "Terms And Condition" }) => {
               </li>
               <li>
                 <strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement)
-                refers to Treact Inc., Navi Mumbai.
+                refers to Wibu MERCH Inc., Navi Mumbai.
               </li>
               <li>
                 <strong>Country</strong> refers to: Maharashtra, India

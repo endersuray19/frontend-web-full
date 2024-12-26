@@ -148,10 +148,10 @@ export default ({ heading = "RANKING PRODUCT" }) => {
 
       // Berikan validasi jika stock habis
 
-      if (items[selectedItem.name]) {
+      if (items[selectedItem.title]) {
         updateItemQuantity(
           selectedItem.id,
-          Number(items[selectedItem.name].quantity) + quantityNumber
+          Number(items[selectedItem.title].quantity) + quantityNumber
         );
       } else {
         addItem(selectedItem, quantityNumber);
@@ -161,7 +161,7 @@ export default ({ heading = "RANKING PRODUCT" }) => {
       closeModal();
 
       toast.success(
-        `Added ${quantityNumber} ${selectedItem.name}(s) to the cart`,
+        `Successfuly added product ${selectedItem.title} to the cart`,
         {
           position: "top-center",
           autoClose: 3000,

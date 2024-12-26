@@ -36,7 +36,7 @@ const Orders = () => {
     setLoading(true); 
         Swal.fire({
           title: "Loading",
-          text: "Please wait while we fetch the product details...",
+          text: "Please wait while we fetch all your orders...",
           allowOutsideClick: false,
           didOpen: () => {
             Swal.showLoading();
