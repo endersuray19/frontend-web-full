@@ -108,7 +108,7 @@ const Orders = () => {
                             className="flex items-center space-x-4 p-4 border border-gray-300 rounded-md"
                           >
                             <img
-                              src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.product?.images?.[0]}`}
+                              src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${item.product?.images?.[0]}`}
                               alt={item.product?.name || "Product Image"}
                               className="w-16 h-16 object-cover rounded"
                             />

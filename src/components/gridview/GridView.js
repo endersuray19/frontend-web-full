@@ -29,7 +29,7 @@ const GridView = ({ products,showPagination=true }) => {
           return (
             <Product
               key={item.id}
-              image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
+              image={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
               name={item.title.length>22 ?`${item.title.slice(0,22)}...`:item.title}
               category={item.category}
               id={item.id}

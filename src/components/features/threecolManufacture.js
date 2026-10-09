@@ -102,7 +102,7 @@ export default ({
               
               <span className="w-[150px] flex flex-col items-center">
               <img 
-                src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+                src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
                 alt="" 
                 className=" w-[120px] h-[120px] shadow-xl" 
               />

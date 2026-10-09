@@ -225,7 +225,7 @@ export default ({ heading = "RANKING PRODUCT" }) => {
                 
                   <Product
               key={card.id}
-              image={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card.images[0]}`}
+              image={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${card.images[0]}`}
               category={card.category}
               name={card.title.length > 25 ? `${card.title.slice(0,25)}... `:card.title}
               id={card.id}

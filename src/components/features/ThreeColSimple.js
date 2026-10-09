@@ -121,7 +121,7 @@ export default ({
               
             //   <span className="w-[150px] flex flex-col items-center">
             //   <img 
-            //     src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+            //     src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
             //     alt="" 
             //     className="rounded-full w-[120px] h-[120px] shadow-xl" 
             //   />
@@ -132,7 +132,7 @@ export default ({
             //   </button>
             <div className="hover:scale-[150%] hover:z-30 w-[150px] flex flex-col items-center mr-5 mt-2 hover:bg-white">
             <img 
-                 src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+                 src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
                 alt="" 
                className="rounded-full w-[120px] h-[120px] shadow-xl " 
               />

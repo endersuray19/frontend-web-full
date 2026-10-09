@@ -157,7 +157,7 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
               {Array.isArray(product?.images) && product?.images?.length > 0 && (
                 <>
                   <ProductImage
-                     src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${product?.images[mainImageIndex]}`}
+                     src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${product?.images[mainImageIndex]}`}
                     alt={product?.title}
                   />
                 </>
@@ -167,7 +167,7 @@ const Container = tw.div`relative bg-white lg:mt-0 mb-5 px-5 lg:w-[1200px] justi
         {product.images.map((image, index) => (
           <img
             key={index}
-            src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${image}`}
+            src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${image}`}
             alt={`${product?.title} - ${index + 1}`}
             className={`h-20 w-20 rounded cursor-pointer ${
               index === mainImageIndex ? "border-2 border-red-500" : ""

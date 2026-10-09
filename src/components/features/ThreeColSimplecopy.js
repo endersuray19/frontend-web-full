@@ -113,7 +113,7 @@ export default ({
       } = useFilterContext();
   const fetchCategory = async () => {
     try {
-      const res = await axios.get( process.env.REACT_APP_API_URL+"/api/Categories");
+      const res = await axios.get( process.env.REACT_APP_API_URL+"/api/categories");
       console.log("categories:", res.data.data); // Debugging log
       setCategory(res.data.data); // Assuming res.data.data is an array
     } catch (err) {
@@ -144,7 +144,7 @@ export default ({
               
               <span className="w-[140px] flex flex-col items-center">
               <img 
-                src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+                src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
                 alt="" 
                 className=" w-[150px] h-[140px] shadow-sm" 
               />
@@ -154,7 +154,7 @@ export default ({
               </Link> */}
               <span className="w-[140px] flex flex-col items-center">
               <img 
-                src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
+                src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${card?.images[0]}`} 
                 alt="" 
                 className=" w-[150px] h-[140px] shadow-sm" 
               />

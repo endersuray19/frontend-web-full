@@ -46,7 +46,7 @@ const Cart = () => {
                   <div className="flex justify-between mt-2 border-b" key={item.id}>
                     <div className="flex items-start gap-10">
                       <img
-                        src={`https://mbvrysnfeutyqrfclwmh.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
+                        src={`https://stqaqzchwgvtritwlczk.supabase.co/storage/v1/object/public/images/${item.images[0]}`}
                         alt={item.images}
                         className="w-[120px]"
                       />
